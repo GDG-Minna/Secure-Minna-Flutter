@@ -1,6 +1,6 @@
-# secure_minna_flutter
+# Secure Minna Project
 
-A new Flutter project.
+Project Secure Minna is an Android / iOS app that will contain emergency contacts, locations of emergency centres or offices in Minna and place markers on the map. we will make it open  source so that other states can use it.
 
 ## Getting Started
 
@@ -14,4 +14,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# Secure-Minna-Flutter
+# Secure-Minna 
