@@ -78,7 +78,10 @@ class NavigationDrawer extends StatelessWidget {
       ),
           Padding(
             padding: EdgeInsets.only(left: 8.0),
-            child: Text(text),
+            child: Text(
+              text,
+              style:TextStyle(
+              fontWeight: FontWeight.normal,  fontFamily: 'Poppins')),
           )
         ],
       ),
