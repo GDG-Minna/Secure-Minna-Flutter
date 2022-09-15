@@ -11,7 +11,10 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
-          title: Text("Secure Minna"),
+          title: Text(
+            "Secure Minna",
+            style: TextStyle(
+              fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),),
         ),
         drawer: NavigationDrawer(),
         body: Center(child: Text("This is About page")));

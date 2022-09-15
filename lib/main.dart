@@ -28,6 +28,7 @@ class MainPage extends StatelessWidget {
       title: 'Main Screen',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Poppins',
       ),
       initialRoute:  '/',
       routes: {
