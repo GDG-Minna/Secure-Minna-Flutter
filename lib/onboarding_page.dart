@@ -42,13 +42,13 @@ class _OnBoardingPageState extends State<OnboardingPage> {
         ),
       ],
       next: const Icon(Icons.navigate_next, size: 40, color: Color(0xFF55A3DA),),
-      done: const Text('Start', style: TextStyle(color: Color(0xFF55A3DA), fontSize: 20)),
+      done: const Text('Start', style: TextStyle(color: Color(0xFF55A3DA), fontSize: 20, fontFamily: 'Poppins')),
       onDone: () => {
         box.put('status', 'true'),
         goToHome(context)
       },
       showSkipButton: true,
-      skip: const Text('Skip', style: TextStyle(color: Color(0xFF55A3DA), fontSize: 20),), //by default, skip goes to the last page
+      skip: const Text('Skip', style: TextStyle(color: Color(0xFF55A3DA), fontFamily: 'Poppins' ,fontSize: 20),), //by default, skip goes to the last page
       onSkip: () => {
         box.put('status', 'true'),
         goToHome(context)
@@ -78,8 +78,8 @@ class _OnBoardingPageState extends State<OnboardingPage> {
   );
 
   PageDecoration buildDecoration() => const PageDecoration(
-    titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF474747)),
-    bodyTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Color(0xFF474747)),
+    titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF474747), fontFamily: 'Poppins'),
+    bodyTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Color(0xFF474747), fontFamily: 'Poppins'),
     pageColor: Colors.white,
     imagePadding: EdgeInsets.all(0),
   );

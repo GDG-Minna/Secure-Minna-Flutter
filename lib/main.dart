@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget {
         'onboarding': (context) => const OnboardingPage(),
         'home' : (context) => const HomePage(),
       },
-      debugShowCheckedModeBanner: false,
+     /*routes: ,*/ debugShowCheckedModeBanner: false,
     );
   }
 }
