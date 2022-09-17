@@ -29,10 +29,10 @@ class NavigationDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacementNamed(context, PageRoutes.privacyPolicy);
                 }),
-            ListTile(
+            /*ListTile(
               title: Text('version 1.0.0'),
               onTap: () {},
-            ),
+            ),*/
           ],
         ),
       );
@@ -54,12 +54,23 @@ class NavigationDrawer extends StatelessWidget {
           Positioned(
               bottom: 12.0,
               left: 16.0,
-              child: Text("Secure Minna",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500))),
+              child: Column(
+                children: [
+                  Text("Secure Minna",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500)),
+                  Text("version 1.0.0",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.normal)),
+                ],
+              )
+          ),
         ]));
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 
-import 'navigation_drawer.dart';
+import '../../components/navigation_drawer.dart';
 
 class SecurityAgenciesPage extends StatelessWidget {
   static const String routeName = '/securityAgenciesPage';
@@ -27,7 +27,7 @@ class SecurityAgenciesPage extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                     fontSize: 13,
                     fontFamily: 'Poppins',
-                    color: Color(0xFF000000))),
+                    color: Color(0xFF7A7E80))),
           ),
           SizedBox(height: 34),
           Padding(
@@ -38,7 +38,7 @@ class SecurityAgenciesPage extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                     fontSize: 18,
                     fontFamily: 'Poppins',
-                    color: Color(0xFF000000))),
+                    color: Color(0xFF474747))),
           ),
           SizedBox(height: 14),
           ListItems(
@@ -119,7 +119,7 @@ class SecurityAgenciesPage extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                     fontSize: 11,
                     fontFamily: 'Poppins',
-                    color: Color(0xFF474747)),
+                    color: Color(0xFF7A7E80)),
               ),
               leading: CircleAvatar(
                 backgroundColor: Color(0xFFFFFFFF),

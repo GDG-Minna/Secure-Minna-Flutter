@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:secure_minna/about_page.dart';
-import 'package:secure_minna/federal_fire_service_page.dart';
-import 'package:secure_minna/federal_road_safety_page.dart';
-import 'package:secure_minna/hospital_page.dart';
-import 'package:secure_minna/nema_page.dart';
-import 'package:secure_minna/nigeria_civil_defence_page.dart';
-import 'package:secure_minna/privacy_policy_page.dart';
+import 'package:secure_minna/screens/home_screens/about_page.dart';
+import 'package:secure_minna/screens/federal_fire_service_screens/federal_fire_service_page.dart';
+import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_page.dart';
+import 'package:secure_minna/screens/hospital_screens/hospital_page.dart';
+import 'package:secure_minna/screens/nema_screens/nema_page.dart';
+import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_page.dart';
+import 'package:secure_minna/screens/home_screens/privacy_policy_page.dart';
 import 'package:secure_minna/routes/page_routes.dart';
-import 'package:secure_minna/security_agencies_page.dart';
+import 'package:secure_minna/screens/home_screens/security_agencies_page.dart';
 
-import 'nigeria_police_force_page.dart';
+import '../nigeria_police_force_screens/nigeria_police_force_page.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         PageRoutes.about: (context) => AboutPage(),
         PageRoutes.privacyPolicy: (context) => PrivacyPolicyPage(),
         PageRoutes.police: (context) => NigeriaPoliceForcePage(),
-        PageRoutes.civilDefence: (context) => NigerianCivilDefencePage(),
+        PageRoutes.civilDefence: (context) => NigeriaCivilDefencePage(),
         PageRoutes.roadSafety: (context) => FederalRoadSafetyPage(),
         PageRoutes.nema: (context) => NemaPage(),
         PageRoutes.fireService: (context) => FederalFireServicePage(),

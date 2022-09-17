@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 
-class NigeriaPoliceForceDetailPage extends StatelessWidget {
+class FederalFireServiceDetailPage extends StatelessWidget {
 
   final SecurityAgenciesModel items;
 
-  NigeriaPoliceForceDetailPage({required this.items});
+  FederalFireServiceDetailPage({required this.items});
 
   @override
   Widget build(BuildContext context) {
