@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/screens/nema_screens/nema_tab_two_page.dart';
+
+import 'nema_tab_one_page.dart';
 
 class NemaDetailPage extends StatelessWidget {
 
@@ -10,15 +13,36 @@ class NemaDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
         appBar: AppBar(
-          title: Text(
-              "${items.title}",
+          title: Text("${items.title}",
               style: TextStyle(
-                fontWeight: FontWeight.normal,  fontFamily: 'Poppins',)
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Poppins',
+              )),
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: "Emergency Call",
+              ),
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: "Map Location",
+              )
+            ],
           ),
         ),
-        body: Center(child: Text("${items.email}")));
+        body: TabBarView(
+          children: [
+            NemaTabOnePage(items: items,),
+            NemaTabTwoPage(items: items,)
+          ],
+        ),
+      ),
+    );
   }
 
 }
