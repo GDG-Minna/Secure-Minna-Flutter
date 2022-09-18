@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:secure_minna/home_page.dart';
+import 'package:secure_minna/screens/home_screens/home_page.dart';
 
 class OnboardingPage extends StatefulWidget {
 

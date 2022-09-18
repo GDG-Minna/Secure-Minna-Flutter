@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Federal Road Safety Office 1",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "roadsafety@gmail.com"
+  },
+  {
+    "id": 2,
+    "title": "Federal Road Safety Office 2",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "roadsafety@gmail.com"
+  }
+]

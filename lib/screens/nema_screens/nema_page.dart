@@ -1,30 +1,30 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:secure_minna/repository/CivilDefenceRepository.dart';
+import 'package:secure_minna/screens/nema_screens/nema_detail_page.dart';
+import 'package:secure_minna/repository/nema_repository.dart';
 
-import 'models/SecurityAgenciesModel.dart';
-import 'nigeria_civil_defence_detail_page.dart';
+import '../../models/SecurityAgenciesModel.dart';
 
-class NigerianCivilDefencePage extends StatefulWidget {
-  static const String routeName = '/civilDefencePage';
-
+class NemaPage extends StatefulWidget {
+  static const String routeName = '/nemaPage';
   @override
-  _NigerianCivilDefencePageState createState() => _NigerianCivilDefencePageState();
+  _NemaPageState createState() => _NemaPageState();
 }
 
-class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
+class _NemaPageState extends State<NemaPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
         appBar: AppBar(
-          title: Text("Nigeria Security and Civil Defence Corps",
+          title: Text(
+              "National Emergency Management Agency",
               style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontFamily: 'Poppins',
-              )),
+                fontWeight: FontWeight.normal,  fontFamily: 'Poppins',)
+          ),
         ),
         body: FutureBuilder(
-          future: CivilDefenceRepository().ReadJsonData(),
+          future: NemaRepository().ReadJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text("${data.error}"));
@@ -33,37 +33,37 @@ class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
               return ListView.builder(
                   itemCount: items == null ? 0 : items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
+                    if(index == 0) {
                       return Column(
                         children: [
                           SizedBox(height: 25),
-                          CivilDefenceList(
+                          NemaList(
                               title: items[index].title.toString(),
                               subTitle: items[index].address.toString(),
-                              icon: 'assets/images/civil_defence.png',
+                              icon: 'assets/images/nema.png',
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(items: items[index])));
-                              })
+                                        builder: (context) => NemaDetailPage(items: items[index])));
+                              }
+                          )
                         ],
                       );
                     } else {
                       return Column(
                         children: [
-                          CivilDefenceList(
+                          NemaList(
                               title: items[index].title.toString(),
                               subTitle: items[index].address.toString(),
-                              icon: 'assets/images/civil_defence.png',
+                              icon: 'assets/images/nema.png',
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(items: items[index])));
-                              })
+                                        builder: (context) => NemaDetailPage(items: items[index])));
+                              }
+                          )
                         ],
                       );
                     }
@@ -77,11 +77,11 @@ class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
         ));
   }
 
-  Widget CivilDefenceList(
+  Widget NemaList(
       {required String title,
-      required String subTitle,
-      required String icon,
-      required GestureTapCallback onTap}) {
+        required String subTitle,
+        required String icon,
+        required GestureTapCallback onTap}) {
     return Column(
       children: [
         Padding(
@@ -120,7 +120,7 @@ class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF474747)),
+                                  color: Color(0xFF47A7E80)),
                             ),
                           )
 
@@ -136,7 +136,8 @@ class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
                         width: 16,
                         height: 16,
                       ),
-                      onTap: onTap),
+                      onTap: onTap
+                  ),
                   SizedBox(height: 15),
                 ],
               )
@@ -145,4 +146,5 @@ class _NigerianCivilDefencePageState extends State<NigerianCivilDefencePage> {
       ],
     );
   }
+
 }
