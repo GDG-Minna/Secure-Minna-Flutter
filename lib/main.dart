@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:secure_minna/screens/home_screens/home_page.dart';
 import 'package:secure_minna/screens/onboarding_screens/splash_screen_page.dart';
 
-import 'onboarding_screens/onboarding_page.dart';
+import 'screens/onboarding_screens/onboarding_page.dart';
 
 int initScreen;
 void main() async  {
