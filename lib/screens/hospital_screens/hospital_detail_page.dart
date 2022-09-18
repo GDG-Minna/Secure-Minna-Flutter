@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/screens/hospital_screens/hospital_tab_one_page.dart';
+import 'package:secure_minna/screens/hospital_screens/hospital_tab_two_page.dart';
 
 class HospitalDetailPage extends StatelessWidget {
 
@@ -10,15 +12,36 @@ class HospitalDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
         appBar: AppBar(
-          title: Text(
-              "${items.title}",
+          title: Text("${items.title}",
               style: TextStyle(
-                fontWeight: FontWeight.normal,  fontFamily: 'Poppins',)
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Poppins',
+              )),
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: "Emergency Call",
+              ),
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: "Map Location",
+              )
+            ],
           ),
         ),
-        body: Center(child: Text("${items.email}")));
+        body: TabBarView(
+          children: [
+            HospitalTabOnePage(items: items,),
+            HospitalTabTwoPage(items: items,)
+          ],
+        ),
+      ),
+    );
   }
 
 }
