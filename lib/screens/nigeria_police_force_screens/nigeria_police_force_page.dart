@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 import 'package:secure_minna/screens/nigeria_police_force_screens/nigeria_police_force_detail_page.dart';
 import 'package:secure_minna/repository/police_repository.dart';
@@ -100,14 +101,14 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                             fontWeight: FontWeight.normal,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            color: Color(0xFF000000)),
+                            color: SecureMinnaColors.black),
                       ),
                       subtitle: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
                             "assets/icons/location.svg",
-                            color: Color(0xFF55A3DA),
+                            color: SecureMinnaColors.primary,
                             width: 12,
                             height: 12,
                           ),
@@ -119,19 +120,19 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF7A7E80)),
+                                  color: SecureMinnaColors.lightWhite),
                             ),
                           )
 
                         ],
                       ),
                       leading: CircleAvatar(
-                        backgroundColor: Color(0xFFFFFFFF),
+                        backgroundColor: SecureMinnaColors.white,
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
                         "assets/icons/arrow.svg",
-                        color: Color(0xFF55A3DA),
+                        color: SecureMinnaColors.primary,
                         width: 16,
                         height: 16,
                       ),
