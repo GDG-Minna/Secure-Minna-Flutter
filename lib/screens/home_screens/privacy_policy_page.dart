@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../components/navigation_drawer.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
