@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/screens/nema_screens/nema_detail_page.dart';
 import 'package:secure_minna/repository/nema_repository.dart';
 
@@ -101,14 +102,14 @@ class _NemaPageState extends State<NemaPage> {
                             fontWeight: FontWeight.normal,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            color: Color(0xFF000000)),
+                            color: SecureMinnaColors.black),
                       ),
                       subtitle: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
                             "assets/icons/location.svg",
-                            color: Color(0xFF55A3DA),
+                            color: SecureMinnaColors.primary,
                             width: 12,
                             height: 12,
                           ),
@@ -127,12 +128,12 @@ class _NemaPageState extends State<NemaPage> {
                         ],
                       ),
                       leading: CircleAvatar(
-                        backgroundColor: Color(0xFFFFFFFF),
+                        backgroundColor: SecureMinnaColors.white,
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
                         "assets/icons/arrow.svg",
-                        color: Color(0xFF55A3DA),
+                        color: SecureMinnaColors.primary,
                         width: 16,
                         height: 16,
                       ),

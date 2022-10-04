@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/screens/home_screens/home_page.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -41,28 +42,28 @@ class _OnBoardingPageState extends State<OnboardingPage> {
           decoration: buildDecoration(),
         ),
       ],
-      next: const Icon(Icons.navigate_next, size: 40, color: Color(0xFF55A3DA),),
-      done: const Text('Start', style: TextStyle(color: Color(0xFF55A3DA), fontSize: 20, fontFamily: 'Poppins')),
+      next: const Icon(Icons.navigate_next, size: 40, color: SecureMinnaColors.primary,),
+      done: const Text('Start', style: TextStyle(color: SecureMinnaColors.primary, fontSize: 20, fontFamily: 'Poppins')),
       onDone: () => {
         box.put('status', 'true'),
         goToHome(context)
       },
       showSkipButton: true,
-      skip: const Text('Skip', style: TextStyle(color: Color(0xFF55A3DA), fontFamily: 'Poppins' ,fontSize: 20),), //by default, skip goes to the last page
+      skip: const Text('Skip', style: TextStyle(color: SecureMinnaColors.primary, fontFamily: 'Poppins' ,fontSize: 20),), //by default, skip goes to the last page
       onSkip: () => {
         box.put('status', 'true'),
         goToHome(context)
       },
       dotsDecorator: getDotDecoration(),
       animationDuration: 1000,
-      globalBackgroundColor: Colors.white,
+      globalBackgroundColor: SecureMinnaColors.white,
     );
   }
 
   DotsDecorator getDotDecoration() => DotsDecorator(
-      color: const Color(0xFFCBE0EF),
+      color: SecureMinnaColors.lightBlue,
       size: const Size(10,10),
-      activeColor: const Color(0xFF55A3DA),
+      activeColor: SecureMinnaColors.primary,
       activeSize: const Size(40,10),
       activeShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
@@ -78,9 +79,9 @@ class _OnBoardingPageState extends State<OnboardingPage> {
   );
 
   PageDecoration buildDecoration() => const PageDecoration(
-    titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF474747), fontFamily: 'Poppins'),
-    bodyTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Color(0xFF474747), fontFamily: 'Poppins'),
-    pageColor: Colors.white,
+    titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: SecureMinnaColors.lightBlack, fontFamily: 'Poppins'),
+    bodyTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: SecureMinnaColors.lightBlack, fontFamily: 'Poppins'),
+    pageColor: SecureMinnaColors.white,
     imagePadding: EdgeInsets.all(0),
   );
 
