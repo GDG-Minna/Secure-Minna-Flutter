@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+import '../../components/secure_minna_colors.dart';
+
 class SplashScreenPage extends StatefulWidget {
 
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -52,7 +54,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             Text(
               'Secure Minna',
               style: TextStyle(
-                  color: Color(0xFF55A3DA), fontSize: 40, fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),
+                  color: SecureMinnaColors.primary, fontSize: 40, fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),
             ),
           ],
         )
