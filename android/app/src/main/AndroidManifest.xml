@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.secure_minna_flutter">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="secure_minna_flutter"
+        android:label="Secure Minna"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBUV2BqiC6PcUb-2xXVPsbKUaNU84qs5V4"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -20,6 +24,12 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+
+            <meta-data
+                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+                android:resource="@drawable/background_launcher"
+                />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -31,4 +41,17 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.View"/>
+            <data android:scheme="sms"/>
+        </intent>
+    </queries>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.View"/>
+            <data android:scheme="tel"/>
+        </intent>
+    </queries>
 </manifest>

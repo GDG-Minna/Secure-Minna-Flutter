@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Hospital 1",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  },
+  {
+    "id": 2,
+    "title": "Hospital 2",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  },
+  {
+    "id": 3,
+    "title": "Hospital 3",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  },
+  {
+    "id": 4,
+    "title": "Hospital 4",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  },
+  {
+    "id": 5,
+    "title": "Hospital 5",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  },
+  {
+    "id": 6,
+    "title": "Hospital 6",
+    "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
+    "lat": 9.5912661,
+    "long": 6.5523868,
+    "phoneNumber1": "08070438242",
+    "phoneNumber2": "",
+    "phoneNumber3": "",
+    "phoneNumber4": "",
+    "email": "policeforce@gmail.com"
+  }
+]

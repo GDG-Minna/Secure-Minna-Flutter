@@ -1,5 +1,5 @@
-name: secure_minna_flutter
-description: A new Flutter project.
+name: secure_minna
+description: App containing all the emergency contacts in Minna.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,10 +34,38 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_fonts: ^2.1.0
+  flutter_svg: ^0.22.0
+    #  Generate locale keys:
+    #  flutter pub run easy_localization:generate -S assets/translations -f keys -o locale_keys.g.dart
+    #  flutter packages pub run build_runner build --delete-conflicting-outputs
+  easy_localization: ^3.0.0
+  easy_localization_loader: ^1.0.0
+  json_annotation: ^4.3.0
+  pretty_dio_logger: ^1.1.1
+  logger: ^1.1.0
+  introduction_screen: ^3.0.1
+  device_info_plus: ^3.1.1
+  auto_size_text: ^3.0.0
+  hive: ^2.2.3
+  path_provider: ^2.0.11
+  url_launcher: ^6.1.5
+  google_maps_flutter: ^2.2.0
+  maps_launcher: ^2.0.1
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.2
+  build_runner: ^2.1.4
+  json_serializable: ^6.0.1
+  freezed: ^0.14.5
+  hive_generator: ^1.1.1
   flutter_test:
     sdk: flutter
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/secure_minna_logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -56,6 +84,25 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
+    - assets/translations/
+    - assets/json/
+
+  fonts:
+      - family: Poppins
+        fonts:
+          - asset: fonts/Poppins-Black.ttf
+          - asset: fonts/Poppins-Bold.ttf
+          - asset: fonts/Poppins-ExtraBold.ttf
+          - asset: fonts/Poppins-ExtraLight.ttf
+          - asset: fonts/Poppins-Light.ttf
+          - asset: fonts/Poppins-Medium.ttf
+          - asset: fonts/Poppins-Regular.ttf
+          - asset: fonts/Poppins-SemiBold.ttf
+          - asset: fonts/Poppins-Thin.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
