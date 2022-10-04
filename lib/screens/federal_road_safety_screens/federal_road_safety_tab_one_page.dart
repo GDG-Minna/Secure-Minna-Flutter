@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/SecurityAgenciesModel.dart';
@@ -24,7 +25,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
-      side: BorderSide(color: Color(0xFF55A3DA), width: 2)
+      side: BorderSide(color: SecureMinnaColors.primary, width: 2)
   );
 
   @override
@@ -118,7 +119,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF474747))),
+                                  color: SecureMinnaColors.lightBlack)),
                           SizedBox(height: 5),
                           Text(
                               "Emergency Number",
@@ -127,7 +128,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                   fontWeight: FontWeight.w500,
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF55A3DA))),
+                                  color: SecureMinnaColors.primary)),
                           SizedBox(height: 5),
                           Text(
                               "${widget.items.phoneNumber1}",
@@ -136,7 +137,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                   fontWeight: FontWeight.w400,
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF7A7E80))),
+                                  color: SecureMinnaColors.lightWhite)),
                           SizedBox(height: 16),
                           Divider(),
                           SizedBox(height: 20),
@@ -151,7 +152,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF474747))),
+                                        color: SecureMinnaColors.lightBlack)),
                               ),
                             ),
                           ),
@@ -166,7 +167,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF7A7E80))),
+                                        color: SecureMinnaColors.lightWhite)),
                               ),
                             ),
                           ),
@@ -182,7 +183,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF474747))),
+                                        color: SecureMinnaColors.lightBlack)),
                               ),
                             ),
                           ),
@@ -197,7 +198,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF7A7E80))),
+                                        color: SecureMinnaColors.lightWhite)),
                               ),
                             ),
                           ),
@@ -220,7 +221,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFFFFFFFF))),
+                                            color: SecureMinnaColors.white)),
                                   )
                               ),
                             ),
@@ -242,7 +243,7 @@ class _FederalRoadSafetyTabOnePageState extends State<FederalRoadSafetyTabOnePag
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
                                             fontFamily: 'Poppins',
-                                            color: Color(0xFF55A3DA))),
+                                            color: SecureMinnaColors.primary)),
                                   )
                               ),
                             ),
