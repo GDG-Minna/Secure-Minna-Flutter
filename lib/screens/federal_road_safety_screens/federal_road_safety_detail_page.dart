@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_tab_one_page.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_tab_two_page.dart';
 
 class FederalRoadSafetyDetailPage extends StatelessWidget {
-
   final SecurityAgenciesModel items;
 
-  FederalRoadSafetyDetailPage({required this.items});
+  const FederalRoadSafetyDetailPage({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +15,11 @@ class FederalRoadSafetyDetailPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("${items.title}",
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Poppins',
               )),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/
@@ -36,12 +34,15 @@ class FederalRoadSafetyDetailPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            FederalRoadSafetyTabOnePage(items: items,),
-            FederalRoadSafetyTabTwoPage(items: items,)
+            FederalRoadSafetyTabOnePage(
+              items: items,
+            ),
+            FederalRoadSafetyTabTwoPage(
+              items: items,
+            )
           ],
         ),
       ),
     );
   }
-
 }

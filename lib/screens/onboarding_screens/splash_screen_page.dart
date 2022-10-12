@@ -6,16 +6,15 @@ import 'package:hive/hive.dart';
 import '../../components/secure_minna_colors.dart';
 
 class SplashScreenPage extends StatefulWidget {
-
   const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  State<SplashScreenPage> createState() => _SplashScreenPageState();
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
   // opening the onboarding box again
-  void open()async{
+  void open() async {
     await Hive.openBox('onboarding');
   }
 
@@ -24,7 +23,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 2), box.get('status') == 'true' ? elseroute : route);
+    Timer(const Duration(seconds: 2),
+        box.get('status') == 'true' ? elseroute : route);
     super.initState();
   }
 
@@ -42,23 +42,26 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Image(
-              fit: BoxFit.fitWidth,
-              image: AssetImage("assets/images/secure_minna_logo.png"),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Image(
+            fit: BoxFit.fitWidth,
+            image: AssetImage("assets/images/secure_minna_logo.png"),
+          ),
+          SizedBox(height: 25),
+          Text(
+            'Secure Minna',
+            style: TextStyle(
+              color: SecureMinnaColors.primary,
+              fontSize: 40,
+              fontWeight: FontWeight.normal,
+              fontFamily: 'Poppins',
             ),
-            SizedBox(height: 25),
-            Text(
-              'Secure Minna',
-              style: TextStyle(
-                  color: SecureMinnaColors.primary, fontSize: 40, fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),
-            ),
-          ],
-        )
-      ),
+          ),
+        ],
+      )),
     );
   }
 }
