@@ -1,11 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart' as rootBundle;
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:flutter/services.dart' as root_bundle;
+import 'package:secure_minna/models/security_agencies_model.dart';
+
 class RoadSafetyRepository {
-  Future<List> ReadJsonData() async {
+  Future<List> readJsonData() async {
     //read json file
-    final jsondata = await rootBundle.rootBundle.loadString('assets/json/road_safety_contact.json');
+    final jsondata = await root_bundle.rootBundle
+        .loadString('assets/json/road_safety_contact.json');
     //decode json data as list
     final list = json.decode(jsondata) as List<dynamic>;
 
