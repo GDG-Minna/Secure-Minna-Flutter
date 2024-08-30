@@ -6,39 +6,43 @@ import 'package:secure_minna/screens/nigeria_police_force_screens/nigeria_police
 class NigeriaPoliceForceDetailPage extends StatelessWidget {
   final SecurityAgenciesModel items;
 
-  NigeriaPoliceForceDetailPage({required this.items});
+  const NigeriaPoliceForceDetailPage({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("${items.title}",
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontFamily: 'Poppins',
-                )),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  /*icon: Icon(Icons.contacts),*/
-                  text: "Emergency Call",
-                ),
-                Tab(
-                  /*icon: Icon(Icons.contacts),*/
-                  text: "Map Location",
-                )
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              NigeriaPoliceForceTabOnePage(items: items,),
-              NigeriaPoliceForceTabTwoPage(items: items,)
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('${items.title}',
+              style: const TextStyle(
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Poppins',
+              )),
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: 'Emergency Call',
+              ),
+              Tab(
+                /*icon: Icon(Icons.contacts),*/
+                text: 'Map Location',
+              )
             ],
           ),
         ),
-      );
+        body: TabBarView(
+          children: [
+            NigeriaPoliceForceTabOnePage(
+              items: items,
+            ),
+            NigeriaPoliceForceTabTwoPage(
+              items: items,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

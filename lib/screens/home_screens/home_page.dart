@@ -9,32 +9,30 @@ import 'package:secure_minna/screens/home_screens/privacy_policy_page.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 import 'package:secure_minna/screens/home_screens/security_agencies_page.dart';
 
-import '../nigeria_police_force_screens/nigeria_police_force_page.dart';
+import 'package:secure_minna/screens/nigeria_police_force_screens/nigeria_police_force_page.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Secure Minna',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
       ),
-      home: SecurityAgenciesPage(),
+      home: const SecurityAgenciesPage(),
       routes: {
-        PageRoutes.securityAgencies: (context) => SecurityAgenciesPage(),
-        PageRoutes.about: (context) => AboutPage(),
-        PageRoutes.privacyPolicy: (context) => PrivacyPolicyPage(),
-        PageRoutes.police: (context) => NigeriaPoliceForcePage(),
-        PageRoutes.civilDefence: (context) => NigeriaCivilDefencePage(),
-        PageRoutes.roadSafety: (context) => FederalRoadSafetyPage(),
-        PageRoutes.nema: (context) => NemaPage(),
-        PageRoutes.fireService: (context) => FederalFireServicePage(),
-        PageRoutes.hospital: (context) => HospitalPage(),
-
+        PageRoutes.securityAgencies: (context) => const SecurityAgenciesPage(),
+        PageRoutes.about: (context) => const AboutPage(),
+        PageRoutes.privacyPolicy: (context) => const PrivacyPolicyPage(),
+        PageRoutes.police: (context) => const NigeriaPoliceForcePage(),
+        PageRoutes.civilDefence: (context) => const NigeriaCivilDefencePage(),
+        PageRoutes.roadSafety: (context) => const FederalRoadSafetyPage(),
+        PageRoutes.nema: (context) => const NemaPage(),
+        PageRoutes.fireService: (context) => const FederalFireServicePage(),
+        PageRoutes.hospital: (context) => const HospitalPage(),
       },
     );
   }

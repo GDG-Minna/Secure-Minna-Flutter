@@ -2,26 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 
-import '../../components/navigation_drawer.dart';
+import 'package:secure_minna/components/navigation_drawers.dart';
 
 class SecurityAgenciesPage extends StatelessWidget {
   static const String routeName = '/securityAgenciesPage';
 
+  const SecurityAgenciesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: Text("Secure Minna"),
+          title: const Text('Secure Minna'),
         ),
-        drawer: NavigationDrawer(),
+        drawer: const NavigationDrawers(),
         body: ListView(padding: EdgeInsets.zero, children: <Widget>[
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           createHeader(),
-          SizedBox(height: 25),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 45),
+          const SizedBox(height: 25),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 45),
             child: Text(
-                "Contact and Report Cases of Crimes, Conflicts or Disasters to Emergency Centres around Minna Metropolis",
+                'Contact and Report Cases of Crimes, Conflicts or Disasters to Emergency Centres around Minna Metropolis',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
@@ -29,10 +31,10 @@ class SecurityAgenciesPage extends StatelessWidget {
                     fontFamily: 'Poppins',
                     color: Color(0xFF7A7E80))),
           ),
-          SizedBox(height: 34),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Text("Emergency Contacts",
+          const SizedBox(height: 34),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Text('Emergency Contacts',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                     fontWeight: FontWeight.normal,
@@ -40,59 +42,59 @@ class SecurityAgenciesPage extends StatelessWidget {
                     fontFamily: 'Poppins',
                     color: Color(0xFF474747))),
           ),
-          SizedBox(height: 14),
-          ListItems(
-              title: "Nigeria Police Force",
-              subTitle: "Crime and Suspicious Activities",
+          const SizedBox(height: 14),
+          listItems(
+              title: 'Nigeria Police Force',
+              subTitle: 'Crime and Suspicious Activities',
               icon: 'assets/images/police.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.police);
               }),
-          SizedBox(height: 8),
-          ListItems(
-              title: "Nigeria Security and Civil Defence Corps",
-              subTitle: "Crisis and Neighborhood Conflicts",
+          const SizedBox(height: 8),
+          listItems(
+              title: 'Nigeria Security and Civil Defence Corps',
+              subTitle: 'Crisis and Neighborhood Conflicts',
               icon: 'assets/images/civil_defence.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.civilDefence);
               }),
-          SizedBox(height: 8),
-          ListItems(
-              title: "Federal Road Safety Corps",
-              subTitle: "Accidents and Highway Related Emergency",
+          const SizedBox(height: 8),
+          listItems(
+              title: 'Federal Road Safety Corps',
+              subTitle: 'Accidents and Highway Related Emergency',
               icon: 'assets/images/road_safety.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.roadSafety);
               }),
-          SizedBox(height: 8),
-          ListItems(
-              title: "National Emergency Management Agency",
-              subTitle: "Disaster and Response Emergency",
+          const SizedBox(height: 8),
+          listItems(
+              title: 'National Emergency Management Agency',
+              subTitle: 'Disaster and Response Emergency',
               icon: 'assets/images/nema.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.nema);
               }),
-          SizedBox(height: 8),
-          ListItems(
-              title: "Federal Fire Service",
-              subTitle: "Fire Accidents Emergency",
+          const SizedBox(height: 8),
+          listItems(
+              title: 'Federal Fire Service',
+              subTitle: 'Fire Accidents Emergency',
               icon: 'assets/images/fire_service.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.fireService);
               }),
-          SizedBox(height: 8),
-          ListItems(
-              title: "Hospitals",
-              subTitle: "Health and Accidents Emergency",
+          const SizedBox(height: 8),
+          listItems(
+              title: 'Hospitals',
+              subTitle: 'Health and Accidents Emergency',
               icon: 'assets/images/hospital.png',
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.hospital);
               }),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
         ]));
   }
 
-  Widget ListItems(
+  Widget listItems(
       {required String title,
       required String subTitle,
       required String icon,
@@ -107,7 +109,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           child: ListTile(
               title: Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 13,
                     fontFamily: 'Poppins',
@@ -115,19 +117,19 @@ class SecurityAgenciesPage extends StatelessWidget {
               ),
               subtitle: Text(
                 subTitle,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 11,
                     fontFamily: 'Poppins',
                     color: Color(0xFF7A7E80)),
               ),
               leading: CircleAvatar(
-                backgroundColor: Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFFFFFFFF),
                 backgroundImage: AssetImage(icon),
               ),
               trailing: SvgPicture.asset(
-                "assets/icons/arrow.svg",
-                color: Color(0xFF55A3DA),
+                'assets/icons/arrow.svg',
+                color: const Color(0xFF55A3DA),
                 width: 16,
                 height: 16,
               ),
@@ -136,10 +138,8 @@ class SecurityAgenciesPage extends StatelessWidget {
   }
 
   Widget createHeader() {
-    return Container(
-      child: Column(
-        children: [buildImage('assets/images/header_security.png')],
-      ),
+    return Column(
+      children: [buildImage('assets/images/header_security.png')],
     );
   }
 

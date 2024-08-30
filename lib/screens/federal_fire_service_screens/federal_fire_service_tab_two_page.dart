@@ -3,54 +3,60 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
-import '../../models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 
 class FederalFireServiceTabTwoPage extends StatefulWidget {
   final SecurityAgenciesModel items;
 
-  FederalFireServiceTabTwoPage({required this.items});
+  const FederalFireServiceTabTwoPage({super.key, required this.items});
 
   @override
-  State<FederalFireServiceTabTwoPage> createState() => _FederalFireServiceTabTwoPageState();
+  State<FederalFireServiceTabTwoPage> createState() =>
+      _FederalFireServiceTabTwoPageState();
 }
 
-class _FederalFireServiceTabTwoPageState extends State<FederalFireServiceTabTwoPage> {
+class _FederalFireServiceTabTwoPageState
+    extends State<FederalFireServiceTabTwoPage> {
   // late SecurityAgenciesModel _item = widget.items;
 
   GoogleMapController? mapController; //controller for Google map
-  Set<Marker> markers = Set(); //markers for google map;
+  Set<Marker> markers = {}; //markers for google map;
   late double lat, lng;
   late String _mapStyle;
 
-  @override
-  void initState() {
+  Future<void> init() async {
     lat = widget.items.lat!;
     lng = widget.items.long!;
     markers.add(Marker(
       //add marker on google map
-      markerId: MarkerId(LatLng(lat,lng).toString()),
+      markerId: MarkerId(LatLng(lat, lng).toString()),
       position: LatLng(lat, lng), //position of marker
       infoWindow: InfoWindow(
-        //popup info
-        title: '${widget.items.title}',
-        snippet: '${widget.items.address}',
-        onTap: () {
-          MapsLauncher.launchCoordinates(lat, lng, "${widget.items.address}");
-        }
-      ),
+          //popup info
+          title: '${widget.items.title}',
+          snippet: '${widget.items.address}',
+          onTap: () {
+            MapsLauncher.launchCoordinates(lat, lng, '${widget.items.address}');
+          }),
       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
     ));
     //you can add more markers here
-    super.initState();
     rootBundle.loadString('assets/json/map_style.txt').then((string) {
       _mapStyle = string;
     });
   }
 
   @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: GoogleMap(
+        style: _mapStyle,
         mapToolbarEnabled: true,
         buildingsEnabled: true,
         //Map widget from google_maps_flutter package
@@ -62,16 +68,14 @@ class _FederalFireServiceTabTwoPageState extends State<FederalFireServiceTabTwoP
           zoom: 18.0, //initial zoom level
         ),
         markers: markers,
-        //markers to show on map
-        mapType: MapType.normal,
-        //map type
+        //mapType: MapType.normal,
         onMapCreated: (controller) {
           //method called when map is created
           setState(() {
             mapController = controller;
-            mapController?.showMarkerInfoWindow(MarkerId(LatLng(lat,lng).toString()));
+            mapController
+                ?.showMarkerInfoWindow(MarkerId(LatLng(lat, lng).toString()));
             mapController?.setMapStyle(_mapStyle);
-
           });
         },
       ),

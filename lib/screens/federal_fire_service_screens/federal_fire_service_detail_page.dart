@@ -1,47 +1,60 @@
-
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 import 'package:secure_minna/screens/federal_fire_service_screens/federal_fire_service_tab_one_page.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_tab_two_page.dart';
 
-class FederalFireServiceDetailPage extends StatelessWidget {
-
+class FederalFireServiceDetailPage extends StatefulWidget {
   final SecurityAgenciesModel items;
 
-  FederalFireServiceDetailPage({required this.items});
+  const FederalFireServiceDetailPage({super.key, required this.items});
+
+  @override
+  State<FederalFireServiceDetailPage> createState() =>
+      _FederalFireServiceDetailPageState();
+}
+
+class _FederalFireServiceDetailPageState
+    extends State<FederalFireServiceDetailPage>
+    with AutomaticKeepAliveClientMixin<FederalFireServiceDetailPage> {
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("${items.title}",
-              style: TextStyle(
+          title: Text('${widget.items.title}',
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Poppins',
               )),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Emergency Call",
+                text: 'Emergency Call',
               ),
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Map Location",
+                text: 'Map Location',
               )
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            FederalFireServiceTabOnePage(items: items,),
-            FederalRoadSafetyTabTwoPage(items: items,)
+            FederalFireServiceTabOnePage(
+              items: widget.items,
+            ),
+            FederalRoadSafetyTabTwoPage(
+              items: widget.items,
+            )
           ],
         ),
       ),
     );
   }
-
 }

@@ -9,6 +9,32 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  errors:
+    prefer_single_quotes: warning
+    avoid_print: warning
+    avoid_empty_else: warning
+    empty_catches: warning
+    empty_statements: warning
+    always_use_package_imports: warning
+    unnecessary_statements: warning
+    avoid_unused_constructor_parameters: warning
+    camel_case_extensions: warning
+    camel_case_types: warning
+    constant_identifier_names: warning
+    curly_braces_in_flow_control_structures: warning
+    exhaustive_cases: warning
+    prefer_const_declarations: warning
+    prefer_is_empty: warning
+    prefer_is_not_empty: warning
+    prefer_final_fields: warning
+    unnecessary_const: warning
+    #prefer_expression_function_bodies: warning
+    #always_specify_types: warning
+  exclude:
+    - "**/*_generated.dart"
+    - lib/services/app_database.g.dart
+    - lib/services/rest_client.g.dart
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -21,9 +47,27 @@ linter:
   # or a specific dart file by using the `// ignore: name_of_lint` and
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
+  #https://dart.dev/tools/linter-rules#error-rules
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
+    avoid_print: true # Uncomment to disable the `avoid_print` rule
+    prefer_single_quotes: true # Uncomment to enable the `prefer_single_quotes` rule
+    empty_statements: true
+    empty_catches: true
+    always_use_package_imports: true
+    unnecessary_statements: true
+    avoid_unused_constructor_parameters: true
+    camel_case_extensions: true
+    camel_case_types: true
+    constant_identifier_names: true
+    curly_braces_in_flow_control_structures: true
+    exhaustive_cases: true
+    prefer_const_declarations: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_final_fields: true
+    unnecessary_const:
+      true
+      #prefer_expression_function_bodies: true
+    #always_specify_types: false
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

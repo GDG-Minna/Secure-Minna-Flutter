@@ -1,15 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 import 'package:secure_minna/screens/nema_screens/nema_tab_two_page.dart';
 
-import 'nema_tab_one_page.dart';
+import 'package:secure_minna/screens/nema_screens/nema_tab_one_page.dart';
 
 class NemaDetailPage extends StatelessWidget {
-
   final SecurityAgenciesModel items;
 
-  NemaDetailPage({required this.items});
+  const NemaDetailPage({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -17,32 +15,35 @@ class NemaDetailPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("${items.title}",
-              style: TextStyle(
+          title: Text('${items.title}',
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Poppins',
               )),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Emergency Call",
+                text: 'Emergency Call',
               ),
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Map Location",
+                text: 'Map Location',
               )
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            NemaTabOnePage(items: items,),
-            NemaTabTwoPage(items: items,)
+            NemaTabOnePage(
+              items: items,
+            ),
+            NemaTabTwoPage(
+              items: items,
+            )
           ],
         ),
       ),
     );
   }
-
 }

@@ -1,4 +1,4 @@
-package com.example.secure_minna_flutter
+package com.secure.minna.mobile
 
 import android.os.Bundle
 import io.flutter.embedding.android.FlutterActivity

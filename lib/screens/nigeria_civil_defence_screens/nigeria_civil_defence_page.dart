@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/repository/civil_defence_repository.dart';
 
-import '../../models/SecurityAgenciesModel.dart';
-import 'nigeria_civil_defence_detail_page.dart';
+import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_detail_page.dart';
 
 class NigeriaCivilDefencePage extends StatefulWidget {
   static const String routeName = '/civilDefencePage';
 
+  const NigeriaCivilDefencePage({super.key});
+
   @override
-  _NigerianCivilDefencePageState createState() => _NigerianCivilDefencePageState();
+  State<NigeriaCivilDefencePage> createState() =>
+      _NigerianCivilDefencePageState();
 }
 
 class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
@@ -17,7 +20,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Nigeria Security and Civil Defence Corps",
+          title: const Text('Nigeria Security and Civil Defence Corps',
               style: TextStyle(
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Poppins',
@@ -27,16 +30,16 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
           future: CivilDefenceRepository().ReadJsonData(),
           builder: (context, data) {
             if (data.hasError) {
-              return Center(child: Text("${data.error}"));
+              return Center(child: Text('${data.error}'));
             } else if (data.hasData) {
               var items = data.data as List<SecurityAgenciesModel>;
               return ListView.builder(
-                  itemCount: items == null ? 0 : items.length,
+                  itemCount: items.length,
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return Column(
                         children: [
-                          SizedBox(height: 25),
+                          const SizedBox(height: 25),
                           CivilDefenceList(
                               title: items[index].title.toString(),
                               subTitle: items[index].address.toString(),
@@ -46,7 +49,8 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(items: items[index])));
+                                            NigerianCivilDefenceDetailPage(
+                                                items: items[index])));
                               })
                         ],
                       );
@@ -62,14 +66,15 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(items: items[index])));
+                                            NigerianCivilDefenceDetailPage(
+                                                items: items[index])));
                               })
                         ],
                       );
                     }
                   });
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -93,11 +98,11 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   ListTile(
                       title: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 13,
                             fontFamily: 'Poppins',
@@ -107,40 +112,38 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            "assets/icons/location.svg",
-                            color: Color(0xFF55A3DA),
+                            'assets/icons/location.svg',
+                            color: const Color(0xFF55A3DA),
                             width: 12,
                             height: 12,
                           ),
-                          SizedBox(width: 3),
+                          const SizedBox(width: 3),
                           Flexible(
-                            child:  Text(
+                            child: Text(
                               subTitle,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
                                   color: Color(0xFF7A7E80)),
                             ),
                           )
-
                         ],
                       ),
                       leading: CircleAvatar(
-                        backgroundColor: Color(0xFFFFFFFF),
+                        backgroundColor: const Color(0xFFFFFFFF),
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        "assets/icons/arrow.svg",
-                        color: Color(0xFF55A3DA),
+                        'assets/icons/arrow.svg',
+                        color: const Color(0xFF55A3DA),
                         width: 16,
                         height: 16,
                       ),
                       onTap: onTap),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                 ],
-              )
-          ),
+              )),
         )
       ],
     );

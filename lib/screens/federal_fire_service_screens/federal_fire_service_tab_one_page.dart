@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 
 class FederalFireServiceTabOnePage extends StatefulWidget {
   final SecurityAgenciesModel items;
 
-  FederalFireServiceTabOnePage({required this.items});
+  const FederalFireServiceTabOnePage({super.key, required this.items});
 
   @override
   State<FederalFireServiceTabOnePage> createState() => _FederalFireServiceTabOnePageState();
@@ -25,7 +25,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
-      side: BorderSide(color: SecureMinnaColors.primary, width: 2)
+      side: const BorderSide(color: SecureMinnaColors.primary, width: 2)
   );
 
   @override
@@ -65,7 +65,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 795,
             width: mqWidth,
             child: Stack(
@@ -74,7 +74,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                     left: 10,
                     top: 20,
                     right: 10,
-                    child: Container(
+                    child: SizedBox(
                       height: 246,
                       width: 566,
                       child: Card(
@@ -84,23 +84,23 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        margin: EdgeInsets.all(5),
-                        child: Image(
+                        margin: const EdgeInsets.all(5),
+                        child: const Image(
                           fit: BoxFit.fill,
-                          image: AssetImage("assets/images/fire_service_header.png"),
+                          image: AssetImage('assets/images/fire_service_header.png'),
                         ),
                       ),
                     )),
-                Positioned(
+                const Positioned(
                     left: 10,
                     top: 190,
                     right: 10,
-                    child: Container(
+                    child: SizedBox(
                       height: 132,
                       width: 132,
                       child: Image(
                         fit: BoxFit.contain,
-                        image: AssetImage("assets/images/fire_service_body.png"),
+                        image: AssetImage('assets/images/fire_service_body.png'),
                       ),
                     )
                 ),
@@ -113,41 +113,41 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                              "${widget.items.title}",
+                              '${widget.items.title}',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
                                   fontFamily: 'Poppins',
                                   color: SecureMinnaColors.lightBlack)),
-                          SizedBox(height: 5),
-                          Text(
-                              "Emergency Number",
+                          const SizedBox(height: 5),
+                          const Text(
+                              'Emergency Number',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
                                   color: SecureMinnaColors.primary)),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
-                              "${widget.items.phoneNumber1}",
+                              '${widget.items.phoneNumber1}',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 13,
                                   fontFamily: 'Poppins',
                                   color: SecureMinnaColors.lightWhite)),
-                          SizedBox(height: 16),
-                          Divider(),
-                          SizedBox(height: 20),
-                          Flexible(
+                          const SizedBox(height: 16),
+                          const Divider(),
+                          const SizedBox(height: 20),
+                          const Flexible(
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,0,0,0),
+                              padding: EdgeInsets.fromLTRB(15,0,0,0),
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                    "Email Address",
+                                    'Email Address',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
@@ -162,8 +162,8 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                    "${widget.items.email}",
-                                    style: TextStyle(
+                                    '${widget.items.email}',
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
                                         fontFamily: 'Poppins',
@@ -171,14 +171,14 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               ),
                             ),
                           ),
-                          SizedBox(height: 22),
-                          Flexible(
+                          const SizedBox(height: 22),
+                          const Flexible(
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,0,0,0),
+                              padding: EdgeInsets.fromLTRB(15,0,0,0),
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                    "Address",
+                                    'Address',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
@@ -193,8 +193,8 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                    "${widget.items.address}",
-                                    style: TextStyle(
+                                    '${widget.items.address}',
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
                                         fontFamily: 'Poppins',
@@ -202,9 +202,9 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               ),
                             ),
                           ),
-                          SizedBox(height: 19),
-                          Divider(),
-                          SizedBox(height: 28),
+                          const SizedBox(height: 19),
+                          const Divider(),
+                          const SizedBox(height: 28),
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(15,5,15,0),
@@ -216,7 +216,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                                       _launchCall();
                                     },
                                     child: const Text(
-                                        "Emergency Call",
+                                        'Emergency Call',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
@@ -226,7 +226,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               ),
                             ),
                           ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Flexible(
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(15,5,15,0),
@@ -238,7 +238,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                                       _launchSMS();
                                     },
                                     child: const Text(
-                                        "Send SMS",
+                                        'Send SMS',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14,
@@ -248,7 +248,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                               ),
                             ),
                           ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                         ],
                       )
                   ),

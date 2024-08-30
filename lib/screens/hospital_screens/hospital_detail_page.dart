@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
 import 'package:secure_minna/screens/hospital_screens/hospital_tab_one_page.dart';
 import 'package:secure_minna/screens/hospital_screens/hospital_tab_two_page.dart';
 
 class HospitalDetailPage extends StatelessWidget {
-
   final SecurityAgenciesModel items;
 
-  HospitalDetailPage({required this.items});
+  const HospitalDetailPage({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -16,32 +14,35 @@ class HospitalDetailPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("${items.title}",
-              style: TextStyle(
+          title: Text('${items.title}',
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 fontFamily: 'Poppins',
               )),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Emergency Call",
+                text: 'Emergency Call',
               ),
               Tab(
                 /*icon: Icon(Icons.contacts),*/
-                text: "Map Location",
+                text: 'Map Location',
               )
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            HospitalTabOnePage(items: items,),
-            HospitalTabTwoPage(items: items,)
+            HospitalTabOnePage(
+              items: items,
+            ),
+            HospitalTabTwoPage(
+              items: items,
+            )
           ],
         ),
       ),
     );
   }
-
 }

@@ -1,22 +1,25 @@
-
 import 'package:flutter/material.dart';
 
-import '../../components/navigation_drawer.dart';
+import 'package:secure_minna/components/navigation_drawers.dart';
 
 class AboutPage extends StatelessWidget {
-
   static const String routeName = '/aboutPage';
+
+  const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Secure Minna",
+          title: const Text(
+            'Secure Minna',
             style: TextStyle(
-              fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),),
+              fontWeight: FontWeight.normal,
+              fontFamily: 'Poppins',
+            ),
+          ),
         ),
-        drawer: NavigationDrawer(),
-        body: Center(child: Text("This is About page")));
+        drawer: const NavigationDrawers(),
+        body: const Center(child: Text('This is About page')));
   }
 }
