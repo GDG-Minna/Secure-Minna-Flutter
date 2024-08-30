@@ -17,10 +17,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Secure Minna',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         fontFamily: 'Poppins',
+        useMaterial3: true,
       ),
       home: const SecurityAgenciesPage(),
       routes: {

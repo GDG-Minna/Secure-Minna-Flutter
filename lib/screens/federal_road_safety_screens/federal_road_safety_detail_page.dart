@@ -20,6 +20,7 @@ class FederalRoadSafetyDetailPage extends StatelessWidget {
                 fontFamily: 'Poppins',
               )),
           bottom: const TabBar(
+            dividerColor: Colors.transparent,
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/

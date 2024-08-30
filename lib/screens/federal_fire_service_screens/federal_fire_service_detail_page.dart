@@ -32,6 +32,7 @@ class _FederalFireServiceDetailPageState
                 fontFamily: 'Poppins',
               )),
           bottom: const TabBar(
+            dividerColor: Colors.transparent,
             tabs: [
               Tab(
                 /*icon: Icon(Icons.contacts),*/
