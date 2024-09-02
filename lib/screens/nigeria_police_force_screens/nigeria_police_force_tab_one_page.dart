@@ -20,6 +20,7 @@ class _NigeriaPoliceForceTabOnePageState
   late final Uri _urlSMS;
 
   final ButtonStyle filledStyle = ElevatedButton.styleFrom(
+      backgroundColor: SecureMinnaColors.primary,
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)));

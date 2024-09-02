@@ -20,10 +20,9 @@ class _HospitalTabTwoPageState extends State<HospitalTabTwoPage> {
   GoogleMapController? mapController; //controller for Google map
   Set<Marker> markers = {}; //markers for google map;
   late double lat, lng;
-  late String _mapStyle;
+  String? _mapStyle;
 
-  @override
-  void initState() {
+  Future<void> init() async {
     lat = widget.items.lat!;
     lng = widget.items.long!;
     markers.add(Marker(
@@ -40,16 +39,22 @@ class _HospitalTabTwoPageState extends State<HospitalTabTwoPage> {
       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
     ));
     //you can add more markers here
-    super.initState();
     rootBundle.loadString('assets/json/map_style.txt').then((string) {
       _mapStyle = string;
     });
   }
 
   @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: GoogleMap(
+        style: _mapStyle,
         mapToolbarEnabled: true,
         buildingsEnabled: true,
         //Map widget from google_maps_flutter package
@@ -58,20 +63,22 @@ class _HospitalTabTwoPageState extends State<HospitalTabTwoPage> {
         initialCameraPosition: CameraPosition(
           //initial position in map
           target: LatLng(lat, lng), //initial position
-          zoom: 18.0, //initial zoom level
+          zoom: 19.0, //initial zoom level
         ),
         markers: markers,
-        //markers to show on map
         mapType: MapType.normal,
-        //map type
         onMapCreated: (controller) {
           //method called when map is created
+          mapController?.setMapStyle(_mapStyle);
           setState(() {
             mapController = controller;
             mapController
                 ?.showMarkerInfoWindow(MarkerId(LatLng(lat, lng).toString()));
-            //TODO fix deprecated function
-            mapController?.setMapStyle(_mapStyle);
+            mapController?.animateCamera(
+              CameraUpdate.newCameraPosition(
+                CameraPosition(target: LatLng(lat, lng), zoom: 19.0),
+              ),
+            );
           });
         },
       ),

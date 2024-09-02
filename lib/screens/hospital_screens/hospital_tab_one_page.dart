@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:secure_minna/models/SecurityAgenciesModel.dart';
@@ -17,6 +18,7 @@ class _HospitalTabOnePageState extends State<HospitalTabOnePage> {
   late final Uri _urlSMS;
 
   final ButtonStyle filledStyle = ElevatedButton.styleFrom(
+      backgroundColor: SecureMinnaColors.primary,
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)));

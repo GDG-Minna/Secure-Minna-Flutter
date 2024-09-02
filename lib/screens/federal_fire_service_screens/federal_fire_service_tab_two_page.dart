@@ -22,7 +22,7 @@ class _FederalFireServiceTabTwoPageState
   GoogleMapController? mapController; //controller for Google map
   Set<Marker> markers = {}; //markers for google map;
   late double lat, lng;
-  late String _mapStyle;
+  String? _mapStyle;
 
   Future<void> init() async {
     lat = widget.items.lat!;
@@ -65,17 +65,22 @@ class _FederalFireServiceTabTwoPageState
         initialCameraPosition: CameraPosition(
           //initial position in map
           target: LatLng(lat, lng), //initial position
-          zoom: 18.0, //initial zoom level
+          zoom: 19.0, //initial zoom level
         ),
         markers: markers,
-        //mapType: MapType.normal,
+        mapType: MapType.normal,
         onMapCreated: (controller) {
           //method called when map is created
+          mapController?.setMapStyle(_mapStyle);
           setState(() {
             mapController = controller;
             mapController
                 ?.showMarkerInfoWindow(MarkerId(LatLng(lat, lng).toString()));
-            mapController?.setMapStyle(_mapStyle);
+            mapController?.animateCamera(
+              CameraUpdate.newCameraPosition(
+                CameraPosition(target: LatLng(lat, lng), zoom: 19.0),
+              ),
+            );
           });
         },
       ),
