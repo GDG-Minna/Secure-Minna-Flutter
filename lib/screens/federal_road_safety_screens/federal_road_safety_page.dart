@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_detail_page.dart';
-import 'package:secure_minna/repository/road_safety_repository.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class FederalRoadSafetyPage extends StatefulWidget {
   static const String routeName = '/roadSafetyPage';
@@ -27,7 +27,7 @@ class _FederalRoadSafetyPageState extends State<FederalRoadSafetyPage> {
               )),
         ),
         body: FutureBuilder(
-          future: RoadSafetyRepository().ReadJsonData(),
+          future: Repository().federalRoadSafetyJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text('${data.error}'));
@@ -36,42 +36,22 @@ class _FederalRoadSafetyPageState extends State<FederalRoadSafetyPage> {
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          RoadSafetyList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/road_safety.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FederalRoadSafetyDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          RoadSafetyList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/road_safety.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FederalRoadSafetyDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        federalRoadSafetyItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/road_safety.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FederalRoadSafetyDetailPage(
+                                              items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -82,7 +62,7 @@ class _FederalRoadSafetyPageState extends State<FederalRoadSafetyPage> {
         ));
   }
 
-  Widget RoadSafetyList(
+  Widget federalRoadSafetyItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -113,7 +93,8 @@ class _FederalRoadSafetyPageState extends State<FederalRoadSafetyPage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            color: SecureMinnaColors.primary,
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -136,7 +117,8 @@ class _FederalRoadSafetyPageState extends State<FederalRoadSafetyPage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        color: SecureMinnaColors.primary,
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

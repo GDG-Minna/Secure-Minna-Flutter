@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_tab_one_page.dart';
 import 'package:secure_minna/screens/federal_road_safety_screens/federal_road_safety_tab_two_page.dart';
 
@@ -23,11 +23,9 @@ class FederalRoadSafetyDetailPage extends StatelessWidget {
             dividerColor: Colors.transparent,
             tabs: [
               Tab(
-                /*icon: Icon(Icons.contacts),*/
                 text: 'Emergency Call',
               ),
               Tab(
-                /*icon: Icon(Icons.contacts),*/
                 text: 'Map Location',
               )
             ],

@@ -31,10 +31,6 @@ analyzer:
     unnecessary_const: warning
     #prefer_expression_function_bodies: warning
     #always_specify_types: warning
-  exclude:
-    - "**/*_generated.dart"
-    - lib/services/app_database.g.dart
-    - lib/services/rest_client.g.dart
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`

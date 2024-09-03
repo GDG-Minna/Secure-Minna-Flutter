@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 
 import 'package:secure_minna/components/navigation_drawers.dart';
@@ -129,7 +130,8 @@ class SecurityAgenciesPage extends StatelessWidget {
               ),
               trailing: SvgPicture.asset(
                 'assets/icons/arrow.svg',
-                color: const Color(0xFF55A3DA),
+                colorFilter: const ColorFilter.mode(
+                    SecureMinnaColors.primary, BlendMode.srcIn),
                 width: 16,
                 height: 16,
               ),

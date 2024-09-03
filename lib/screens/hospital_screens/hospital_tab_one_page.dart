@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class HospitalTabOnePage extends StatefulWidget {
   final SecurityAgenciesModel items;
@@ -109,8 +109,7 @@ class _HospitalTabOnePageState extends State<HospitalTabOnePage> {
                   left: 10,
                   top: 320,
                   right: 10,
-                  child: Container(
-                      child: Column(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text('${widget.items.title}',
@@ -240,7 +239,7 @@ class _HospitalTabOnePageState extends State<HospitalTabOnePage> {
                       ),
                       const SizedBox(height: 30),
                     ],
-                  )),
+                  ),
                 )
               ],
             ),

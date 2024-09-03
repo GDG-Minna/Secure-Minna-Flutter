@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_tab_one_page.dart';
 import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_tab_two_page.dart';
 
@@ -23,11 +23,9 @@ class NigerianCivilDefenceDetailPage extends StatelessWidget {
             dividerColor: Colors.transparent,
             tabs: [
               Tab(
-                /*icon: Icon(Icons.contacts),*/
                 text: 'Emergency Call',
               ),
               Tab(
-                /*icon: Icon(Icons.contacts),*/
                 text: 'Map Location',
               )
             ],

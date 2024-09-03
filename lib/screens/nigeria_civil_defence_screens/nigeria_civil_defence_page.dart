@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:secure_minna/repository/civil_defence_repository.dart';
+import 'package:secure_minna/repository/repository.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_detail_page.dart';
+
+import 'package:secure_minna/components/secure_minna_colors.dart';
 
 class NigeriaCivilDefencePage extends StatefulWidget {
   static const String routeName = '/civilDefencePage';
@@ -27,7 +29,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
               )),
         ),
         body: FutureBuilder(
-          future: CivilDefenceRepository().ReadJsonData(),
+          future: Repository().civilDefenseJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text('${data.error}'));
@@ -36,42 +38,22 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          CivilDefenceList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/civil_defence.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          CivilDefenceList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/civil_defence.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigerianCivilDefenceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        civilDefenceItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/civil_defence.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NigerianCivilDefenceDetailPage(
+                                              items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -82,7 +64,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
         ));
   }
 
-  Widget CivilDefenceList(
+  Widget civilDefenceItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -113,7 +95,8 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            color: const Color(0xFF55A3DA),
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -125,7 +108,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF7A7E80)),
+                                  color: SecureMinnaColors.lightWhite),
                             ),
                           )
                         ],
@@ -136,7 +119,8 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        color: const Color(0xFF55A3DA),
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

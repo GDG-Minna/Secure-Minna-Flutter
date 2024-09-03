@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/hospital_screens/hospital_detail_page.dart';
-import 'package:secure_minna/repository/hospital_repository.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class HospitalPage extends StatefulWidget {
   static const String routeName = '/hospitalPage';
@@ -26,7 +27,7 @@ class _HospitalPageState extends State<HospitalPage> {
               )),
         ),
         body: FutureBuilder(
-          future: HospitalRepository().ReadJsonData(),
+          future: Repository().governmentHospitalJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text('${data.error}'));
@@ -35,42 +36,21 @@ class _HospitalPageState extends State<HospitalPage> {
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          hospitalList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/hospital.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            HospitalDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          hospitalList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/hospital.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            HospitalDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        hospitalItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/hospital.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HospitalDetailPage(
+                                          items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -81,7 +61,7 @@ class _HospitalPageState extends State<HospitalPage> {
         ));
   }
 
-  Widget hospitalList(
+  Widget hospitalItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -112,8 +92,8 @@ class _HospitalPageState extends State<HospitalPage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            //TODO fix deprecated function
-                            color: const Color(0xFF55A3DA),
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -136,8 +116,8 @@ class _HospitalPageState extends State<HospitalPage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        //TODO fix deprecated function
-                        color: const Color(0xFF55A3DA),
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

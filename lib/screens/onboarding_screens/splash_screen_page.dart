@@ -9,7 +9,7 @@ class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  State<SplashScreenPage> createState() => _SplashScreenPageState();
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
@@ -24,17 +24,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2),
-        box.get('status') == 'true' ? elseroute : route);
+        box.get('status') == 'true' ? routeHome : routeOnboarding);
     super.initState();
   }
 
   // Function to Navigate to the on-boarding screen
-  route() {
+  routeOnboarding() {
     Navigator.pushReplacementNamed(context, 'onboarding');
   }
 
   // Function to Navigate to the main screen
-  elseroute() {
+  routeHome() {
     Navigator.pushReplacementNamed(context, 'home');
   }
 

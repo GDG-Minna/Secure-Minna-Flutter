@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/federal_fire_service_screens/federal_fire_service_detail_page.dart';
-import 'package:secure_minna/repository/fire_service_repository.dart';
 
 import 'package:secure_minna/components/secure_minna_colors.dart';
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class FederalFireServicePage extends StatefulWidget {
   static const String routeName = '/fireServicePage';
@@ -28,51 +28,36 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
               )),
         ),
         body: FutureBuilder(
-          future: FireServiceRepository().ReadJsonData(),
+          future: Repository().federalFireServiceJsonData(),
           builder: (context, data) {
             if (data.hasError) {
-              return Center(child: Text('${data.error}'));
+              return Center(
+                  child: Text('${data.error}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontFamily: 'Poppins',
+                      )));
             } else if (data.hasData) {
               var items = data.data as List<SecurityAgenciesModel>;
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          FireServiceList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/fire_service.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FederalFireServiceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          FireServiceList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/fire_service.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FederalFireServiceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        fireServiceItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/fire_service.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FederalFireServiceDetailPage(
+                                              items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -83,7 +68,7 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
         ));
   }
 
-  Widget FireServiceList(
+  Widget fireServiceItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -114,7 +99,8 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            color: SecureMinnaColors.primary,
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -137,7 +123,8 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        color: SecureMinnaColors.primary,
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

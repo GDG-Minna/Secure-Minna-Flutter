@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/nema_screens/nema_detail_page.dart';
-import 'package:secure_minna/repository/nema_repository.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class NemaPage extends StatefulWidget {
   static const String routeName = '/nemaPage';
@@ -26,7 +26,7 @@ class _NemaPageState extends State<NemaPage> {
               )),
         ),
         body: FutureBuilder(
-          future: NemaRepository().ReadJsonData(),
+          future: Repository().nemaJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text('${data.error}'));
@@ -35,40 +35,21 @@ class _NemaPageState extends State<NemaPage> {
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          nemaList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/nema.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NemaDetailPage(
-                                            items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          nemaList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/nema.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NemaDetailPage(
-                                            items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        nemaItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/nema.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NemaDetailPage(items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -79,7 +60,7 @@ class _NemaPageState extends State<NemaPage> {
         ));
   }
 
-  Widget nemaList(
+  Widget nemaItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -110,8 +91,8 @@ class _NemaPageState extends State<NemaPage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            //TODO fix deprecated function
-                            color: SecureMinnaColors.primary,
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -123,7 +104,7 @@ class _NemaPageState extends State<NemaPage> {
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xff47a7e80)),
+                                  color: SecureMinnaColors.lightWhite),
                             ),
                           )
                         ],
@@ -134,8 +115,8 @@ class _NemaPageState extends State<NemaPage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        //TODO fix deprecated function
-                        color: SecureMinnaColors.primary,
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

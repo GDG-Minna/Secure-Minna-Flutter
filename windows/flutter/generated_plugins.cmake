@@ -3,7 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus
+  firebase_core
   maps_launcher
   url_launcher_windows
 )

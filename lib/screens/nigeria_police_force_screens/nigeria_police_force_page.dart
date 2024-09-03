@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/nigeria_police_force_screens/nigeria_police_force_detail_page.dart';
-import 'package:secure_minna/repository/police_repository.dart';
 
 class NigeriaPoliceForcePage extends StatefulWidget {
   static const String routeName = '/policePage';
@@ -26,7 +26,7 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
               )),
         ),
         body: FutureBuilder(
-          future: PoliceRepository().ReadJsonData(),
+          future: Repository().policeJsonData(),
           builder: (context, data) {
             if (data.hasError) {
               return Center(child: Text('${data.error}'));
@@ -35,42 +35,22 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
               return ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 25),
-                          policeList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/police.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigeriaPoliceForceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          policeList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/police.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            NigeriaPoliceForceDetailPage(
-                                                items: items[index])));
-                              })
-                        ],
-                      );
-                    }
+                    return Column(
+                      children: [
+                        policeItem(
+                            title: items[index].title.toString(),
+                            subTitle: items[index].address.toString(),
+                            icon: 'assets/images/police.png',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NigeriaPoliceForceDetailPage(
+                                              items: items[index])));
+                            })
+                      ],
+                    );
                   });
             } else {
               return const Center(
@@ -81,7 +61,7 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
         ));
   }
 
-  Widget policeList(
+  Widget policeItem(
       {required String title,
       required String subTitle,
       required String icon,
@@ -112,8 +92,8 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/location.svg',
-                            //TODO fix deprecated function
-                            color: SecureMinnaColors.primary,
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
@@ -136,8 +116,8 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                       ),
                       trailing: SvgPicture.asset(
                         'assets/icons/arrow.svg',
-                        //TODO fix deprecated function
-                        color: SecureMinnaColors.primary,
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),

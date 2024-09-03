@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:secure_minna/models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class NigeriaPoliceForceTabOnePage extends StatefulWidget {
   final SecurityAgenciesModel items;
@@ -16,8 +16,8 @@ class NigeriaPoliceForceTabOnePage extends StatefulWidget {
 
 class _NigeriaPoliceForceTabOnePageState
     extends State<NigeriaPoliceForceTabOnePage> {
-  late final Uri _urlCall;
-  late final Uri _urlSMS;
+  Uri? _urlCall;
+  Uri? _urlSMS;
 
   final ButtonStyle filledStyle = ElevatedButton.styleFrom(
       backgroundColor: SecureMinnaColors.primary,
@@ -49,13 +49,13 @@ class _NigeriaPoliceForceTabOnePageState
   }
 
   Future<void> _launchCall() async {
-    if (!await launchUrl(_urlCall)) {
+    if (!await launchUrl(_urlCall!)) {
       throw 'Could not launch $_urlCall';
     }
   }
 
   Future<void> _launchSMS() async {
-    if (!await launchUrl(_urlSMS)) {
+    if (!await launchUrl(_urlSMS!)) {
       throw 'Could not launch $_urlSMS';
     }
   }
@@ -110,8 +110,7 @@ class _NigeriaPoliceForceTabOnePageState
                   left: 10,
                   top: 320,
                   right: 10,
-                  child: Container(
-                      child: Column(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text('${widget.items.title}',
@@ -241,7 +240,7 @@ class _NigeriaPoliceForceTabOnePageState
                       ),
                       const SizedBox(height: 30),
                     ],
-                  )),
+                  ),
                 )
               ],
             ),
