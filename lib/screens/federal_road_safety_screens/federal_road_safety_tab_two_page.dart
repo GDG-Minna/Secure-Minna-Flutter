@@ -72,7 +72,7 @@ class _FederalRoadSafetyTabTwoPageState
         mapType: MapType.normal,
         onMapCreated: (controller) {
           //method called when map is created
-          mapController?.setMapStyle(_mapStyle);
+          //mapController?.setMapStyle(_mapStyle);
           setState(() {
             mapController = controller;
             mapController

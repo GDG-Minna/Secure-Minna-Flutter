@@ -70,7 +70,7 @@ class _HospitalTabTwoPageState extends State<HospitalTabTwoPage> {
         mapType: MapType.normal,
         onMapCreated: (controller) {
           //method called when map is created
-          mapController?.setMapStyle(_mapStyle);
+          //mapController?.setMapStyle(_mapStyle);
           setState(() {
             mapController = controller;
             mapController
