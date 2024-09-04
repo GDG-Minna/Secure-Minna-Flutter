@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/screens/home_screens/home_page.dart';
+import 'package:secure_minna/util/app_images.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -24,21 +25,21 @@ class _OnBoardingPageState extends State<OnboardingPage> {
           title: 'Report Suspicious activities',
           body:
               'Call or send SMS to report suspicious or fraudulent activities around your environ without stress.',
-          image: buildImage('assets/images/onboarding1.png'),
+          image: buildImage(AppImages.onboardingImage1),
           decoration: buildDecoration(),
         ),
         PageViewModel(
           title: 'Call for help from Emergency Centres',
           body:
               'Call emergency centres for first aid response or disaster recovery agencies for quick action and backup.',
-          image: buildImage('assets/images/onboarding2.png'),
+          image: buildImage(AppImages.onboardingImage2),
           decoration: buildDecoration(),
         ),
         PageViewModel(
           title: 'Locate Emergency Centres using Map',
           body:
               'Navigate easily to the nearest emergency centre to report a case or admit victims/detain Suspects.',
-          image: buildImage('assets/images/onboarding3.png'),
+          image: buildImage(AppImages.onboardingImage3),
           decoration: buildDecoration(),
         ),
       ],

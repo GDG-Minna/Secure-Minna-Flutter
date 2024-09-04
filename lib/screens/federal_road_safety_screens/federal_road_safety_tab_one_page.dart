@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/util/app_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:secure_minna/models/security_agencies_model.dart';
@@ -90,8 +91,7 @@ class _FederalRoadSafetyTabOnePageState
                         margin: const EdgeInsets.all(5),
                         child: const Image(
                           fit: BoxFit.fill,
-                          image: AssetImage(
-                              'assets/images/road_safety_header.png'),
+                          image: AssetImage(AppImages.roadSafetyHeader),
                         ),
                       ),
                     )),
@@ -104,7 +104,7 @@ class _FederalRoadSafetyTabOnePageState
                       width: 132,
                       child: Image(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/images/road_safety_body.png'),
+                        image: AssetImage(AppImages.roadSafetyBody),
                       ),
                     )),
                 Positioned(

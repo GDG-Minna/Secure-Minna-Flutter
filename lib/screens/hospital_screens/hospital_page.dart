@@ -5,6 +5,8 @@ import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/hospital_screens/hospital_detail_page.dart';
 
 import 'package:secure_minna/models/security_agencies_model.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class HospitalPage extends StatefulWidget {
   static const String routeName = '/hospitalPage';
@@ -41,7 +43,7 @@ class _HospitalPageState extends State<HospitalPage> {
                         hospitalItem(
                             title: items[index].title.toString(),
                             subTitle: items[index].address.toString(),
-                            icon: 'assets/images/hospital.png',
+                            icon: AppImages.hospitalLogo,
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -91,7 +93,7 @@ class _HospitalPageState extends State<HospitalPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/location.svg',
+                            AppVectors.locationIcon,
                             colorFilter: const ColorFilter.mode(
                                 SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
@@ -115,7 +117,7 @@ class _HospitalPageState extends State<HospitalPage> {
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        'assets/icons/arrow.svg',
+                        AppVectors.arrowRightIcon,
                         colorFilter: const ColorFilter.mode(
                             SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,

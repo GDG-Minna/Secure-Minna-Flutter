@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/util/app_images.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         children: [
           Image(
             fit: BoxFit.fitWidth,
-            image: AssetImage('assets/images/secure_minna_logo.png'),
+            image: AssetImage(AppImages.splashScreenLogo),
           ),
           SizedBox(height: 25),
           Text(

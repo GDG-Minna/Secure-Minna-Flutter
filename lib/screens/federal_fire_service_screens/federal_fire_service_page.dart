@@ -5,6 +5,8 @@ import 'package:secure_minna/screens/federal_fire_service_screens/federal_fire_s
 
 import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/models/security_agencies_model.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class FederalFireServicePage extends StatefulWidget {
   static const String routeName = '/fireServicePage';
@@ -47,7 +49,7 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
                         fireServiceItem(
                             title: items[index].title.toString(),
                             subTitle: items[index].address.toString(),
-                            icon: 'assets/images/fire_service.png',
+                            icon: AppImages.fireServiceLogo,
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -98,7 +100,7 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/location.svg',
+                            AppVectors.locationIcon,
                             colorFilter: const ColorFilter.mode(
                                 SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
@@ -122,7 +124,7 @@ class _FederalFirerServicePageState extends State<FederalFireServicePage> {
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        'assets/icons/arrow.svg',
+                        AppVectors.arrowRightIcon,
                         colorFilter: const ColorFilter.mode(
                             SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,

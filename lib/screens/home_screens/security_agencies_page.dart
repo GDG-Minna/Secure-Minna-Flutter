@@ -4,6 +4,8 @@ import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 
 import 'package:secure_minna/components/navigation_drawers.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class SecurityAgenciesPage extends StatelessWidget {
   static const String routeName = '/securityAgenciesPage';
@@ -47,7 +49,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           listItems(
               title: 'Nigeria Police Force',
               subTitle: 'Crime and Suspicious Activities',
-              icon: 'assets/images/police.png',
+              icon: AppImages.policeLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.police);
               }),
@@ -55,7 +57,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           listItems(
               title: 'Nigeria Security and Civil Defence Corps',
               subTitle: 'Crisis and Neighborhood Conflicts',
-              icon: 'assets/images/civil_defence.png',
+              icon: AppImages.civilDefenceLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.civilDefence);
               }),
@@ -63,7 +65,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           listItems(
               title: 'Federal Road Safety Corps',
               subTitle: 'Accidents and Highway Related Emergency',
-              icon: 'assets/images/road_safety.png',
+              icon: AppImages.roadSafetyLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.roadSafety);
               }),
@@ -71,15 +73,15 @@ class SecurityAgenciesPage extends StatelessWidget {
           listItems(
               title: 'National Emergency Management Agency',
               subTitle: 'Disaster and Response Emergency',
-              icon: 'assets/images/nema.png',
+              icon: AppImages.nemaLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.nema);
               }),
           const SizedBox(height: 8),
           listItems(
-              title: 'Federal Fire Service',
+              title: 'Fire Service',
               subTitle: 'Fire Accidents Emergency',
-              icon: 'assets/images/fire_service.png',
+              icon: AppImages.fireServiceLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.fireService);
               }),
@@ -87,7 +89,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           listItems(
               title: 'Hospitals',
               subTitle: 'Health and Accidents Emergency',
-              icon: 'assets/images/hospital.png',
+              icon: AppImages.hospitalLogo,
               onTap: () {
                 Navigator.pushNamed(context, PageRoutes.hospital);
               }),
@@ -129,7 +131,7 @@ class SecurityAgenciesPage extends StatelessWidget {
                 backgroundImage: AssetImage(icon),
               ),
               trailing: SvgPicture.asset(
-                'assets/icons/arrow.svg',
+                AppVectors.arrowRightIcon,
                 colorFilter: const ColorFilter.mode(
                     SecureMinnaColors.primary, BlendMode.srcIn),
                 width: 16,
@@ -141,7 +143,7 @@ class SecurityAgenciesPage extends StatelessWidget {
 
   Widget createHeader() {
     return Column(
-      children: [buildImage('assets/images/header_security.png')],
+      children: [buildImage(AppImages.headerSecurity)],
     );
   }
 

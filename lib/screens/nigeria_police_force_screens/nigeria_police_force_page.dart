@@ -4,6 +4,8 @@ import 'package:secure_minna/components/secure_minna_colors.dart';
 import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/nigeria_police_force_screens/nigeria_police_force_detail_page.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class NigeriaPoliceForcePage extends StatefulWidget {
   static const String routeName = '/policePage';
@@ -40,7 +42,7 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                         policeItem(
                             title: items[index].title.toString(),
                             subTitle: items[index].address.toString(),
-                            icon: 'assets/images/police.png',
+                            icon: AppImages.policeLogo,
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -91,7 +93,7 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/location.svg',
+                            AppVectors.locationIcon,
                             colorFilter: const ColorFilter.mode(
                                 SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
@@ -115,7 +117,7 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        'assets/icons/arrow.svg',
+                        AppVectors.arrowRightIcon,
                         colorFilter: const ColorFilter.mode(
                             SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,

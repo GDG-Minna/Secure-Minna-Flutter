@@ -6,6 +6,8 @@ import 'package:secure_minna/models/security_agencies_model.dart';
 import 'package:secure_minna/screens/nigeria_civil_defence_screens/nigeria_civil_defence_detail_page.dart';
 
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class NigeriaCivilDefencePage extends StatefulWidget {
   static const String routeName = '/civilDefencePage';
@@ -43,7 +45,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                         civilDefenceItem(
                             title: items[index].title.toString(),
                             subTitle: items[index].address.toString(),
-                            icon: 'assets/images/civil_defence.png',
+                            icon: AppImages.civilDefenceLogo,
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -94,7 +96,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/location.svg',
+                            AppVectors.locationIcon,
                             colorFilter: const ColorFilter.mode(
                                 SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
@@ -118,7 +120,7 @@ class _NigerianCivilDefencePageState extends State<NigeriaCivilDefencePage> {
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        'assets/icons/arrow.svg',
+                        AppVectors.arrowRightIcon,
                         colorFilter: const ColorFilter.mode(
                             SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,

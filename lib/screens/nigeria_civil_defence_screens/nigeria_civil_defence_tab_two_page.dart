@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
 import 'package:secure_minna/models/security_agencies_model.dart';
+import 'package:secure_minna/repository/app_constant.dart';
 
 class NigeriaCivilDefenceTabTwoPage extends StatefulWidget {
   final SecurityAgenciesModel items;
@@ -41,7 +42,7 @@ class _NigeriaCivilDefenceTabTwoPageState
       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
     ));
     //you can add more markers here
-    rootBundle.loadString('assets/json/map_style.txt').then((string) {
+    rootBundle.loadString(AppConstant.mapStyle).then((string) {
       _mapStyle = string;
     });
   }

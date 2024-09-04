@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:secure_minna/routes/page_routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class NavigationDrawers extends StatelessWidget {
   const NavigationDrawers({super.key});
@@ -13,7 +15,7 @@ class NavigationDrawers extends StatelessWidget {
         children: <Widget>[
           createDrawerHeader(),
           createDrawerBodyItem(
-              icon: 'assets/icons/home.svg',
+              icon: AppVectors.homeIcon,
               text: 'Security Agencies',
               onTap: () {
                 Navigator.pushReplacementNamed(
@@ -21,13 +23,13 @@ class NavigationDrawers extends StatelessWidget {
               }),
           const Divider(),
           createDrawerBodyItem(
-              icon: 'assets/icons/info.svg',
+              icon: AppVectors.infoIcon,
               text: 'About',
               onTap: () {
                 Navigator.pushReplacementNamed(context, PageRoutes.about);
               }),
           createDrawerBodyItem(
-              icon: 'assets/icons/privacy.svg',
+              icon: AppVectors.privacyIcon,
               text: 'Privacy Policy',
               onTap: () {
                 Navigator.pushReplacementNamed(
@@ -49,8 +51,7 @@ class NavigationDrawers extends StatelessWidget {
         decoration: BoxDecoration(
             color: Color(0xFF55A3DA),
             image: DecorationImage(
-                fit: BoxFit.contain,
-                image: AssetImage('assets/images/header_image.png'))),
+                fit: BoxFit.contain, image: AssetImage(AppImages.headerImage))),
         child: Stack(children: <Widget>[
           Positioned(
               bottom: 12.0,
@@ -83,7 +84,8 @@ class NavigationDrawers extends StatelessWidget {
         children: <Widget>[
           SvgPicture.asset(
             icon,
-            color: const Color(0xFF585858),
+            colorFilter:
+                const ColorFilter.mode(Color(0xFF585858), BlendMode.srcIn),
             width: 25,
             height: 25,
           ),
