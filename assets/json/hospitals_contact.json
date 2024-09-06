@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Hospital 1",
+    "title": "Hospital Bosso",
     "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
     "lat": 9.5912661,
     "long": 6.5523868,
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "title": "Hospital 2",
+    "title": "Hospital Tunga",
     "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
     "lat": 9.5912661,
     "long": 6.5523868,
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "title": "Hospital 3",
+    "title": "Hospital Kpagungu",
     "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
     "lat": 9.5912661,
     "long": 6.5523868,
@@ -37,7 +37,7 @@
   },
   {
     "id": 4,
-    "title": "Hospital 4",
+    "title": "Hospital Chanchaga",
     "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
     "lat": 9.5912661,
     "long": 6.5523868,
@@ -49,7 +49,7 @@
   },
   {
     "id": 5,
-    "title": "Hospital 5",
+    "title": "Hospital 6", 
     "address": "HHR3+H44, Jega Kuta Road, Tudun Wada South 920101, Minna",
     "lat": 9.5912661,
     "long": 6.5523868,

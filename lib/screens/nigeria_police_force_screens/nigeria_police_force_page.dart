@@ -17,6 +17,10 @@ class NigeriaPoliceForcePage extends StatefulWidget {
 }
 
 class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
+  TextEditingController searchController = TextEditingController();
+  List<SecurityAgenciesModel> _allItems = [];
+  List<SecurityAgenciesModel> _filteredItems = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,40 +31,122 @@ class _NigeriaPoliceForcePageState extends State<NigeriaPoliceForcePage> {
                 fontFamily: 'Poppins',
               )),
         ),
-        body: FutureBuilder(
-          future: Repository().policeJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text('${data.error}'));
-            } else if (data.hasData) {
-              var items = data.data as List<SecurityAgenciesModel>;
-              return ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        policeItem(
-                            title: items[index].title.toString(),
-                            subTitle: items[index].address.toString(),
-                            icon: AppImages.policeLogo,
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          NigeriaPoliceForceDetailPage(
-                                              items: items[index])));
-                            })
-                      ],
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: TextFormField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  hintText: 'Start your search here',
+                  hintStyle: const TextStyle(fontSize: 13),
+                  prefixIcon: const Icon(Icons.search,
+                      color: SecureMinnaColors.lightBlack),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onChanged: (query) {
+                  _filterItems(query);
+                },
+              ),
+            ),
+            Expanded(
+              child: FutureBuilder(
+                future: Repository().policeJsonData(),
+                builder: (context, data) {
+                  if (data.hasError) {
+                    return Center(
+                        child: Text('${data.error}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Poppins',
+                            )));
+                  } else if (data.hasData) {
+                    _allItems = data.data as List<SecurityAgenciesModel>;
+                    if (_filteredItems.isEmpty &&
+                        searchController.text.isEmpty) {
+                      _filteredItems = _allItems;
+                    }
+                    return _filteredItems.isEmpty
+                        ? const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 5),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.policy_outlined,
+                                    color: SecureMinnaColors.lightBlack,
+                                    size: 50),
+                                SizedBox(height: 10),
+                                Text(
+                                  'We apologize, but we couldn\'t locate the information you\'re looking for.',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: SecureMinnaColors.lightBlack,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: _filteredItems.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  policeItem(
+                                      title: _filteredItems[index]
+                                          .title
+                                          .toString(),
+                                      subTitle: _filteredItems[index]
+                                          .address
+                                          .toString(),
+                                      icon: AppImages.policeLogo,
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NigeriaPoliceForceDetailPage(
+                                                        items: _filteredItems[
+                                                            index])));
+                                      })
+                                ],
+                              );
+                            });
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  });
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+                  }
+                },
+              ),
+            ),
+          ],
         ));
+  }
+
+  void _filterItems(String query) {
+    setState(() {
+      _filteredItems = _allItems
+          .where((item) =>
+              item.title
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()) ||
+              item.phoneNumber1
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()) ||
+              item.address
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()))
+          .toList();
+    });
   }
 
   Widget policeItem(

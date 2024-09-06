@@ -19,7 +19,7 @@ class SecurityAgenciesPage extends StatelessWidget {
           title: const Text('Secure Minna'),
         ),
         drawer: const NavigationDrawers(),
-        body: ListView(padding: EdgeInsets.zero, children: <Widget>[
+        body: ListView(padding: EdgeInsets.zero, children: [
           const SizedBox(height: 15),
           createHeader(),
           const SizedBox(height: 25),

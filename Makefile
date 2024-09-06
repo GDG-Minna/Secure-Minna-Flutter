@@ -13,9 +13,9 @@ build_release_apk_aab:
 shorebird_release_android:
 	 shorebird release android --target lib/main.dart -- --obfuscate --split-debug-info=secure_minna
 
-shorebird_patch_android_staging:
+shorebird_patch_android:
 	 shorebird patch android --target lib/main.dart -- --obfuscate --split-debug-info=secure_minna
 
-shorebird_preview_android_staging:
-	 shorebird preview --app-id <add generated app id>
+shorebird_preview_android:
+	 shorebird preview --app-id 5f9269bb-977f-4300-8c65-5c0e0e0196ba
 	 

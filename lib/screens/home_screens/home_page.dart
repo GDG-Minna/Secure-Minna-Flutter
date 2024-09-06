@@ -16,26 +16,43 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Secure Minna',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
-      home: const SecurityAgenciesPage(),
-      routes: {
-        PageRoutes.securityAgencies: (context) => const SecurityAgenciesPage(),
-        PageRoutes.about: (context) => const AboutPage(),
-        PageRoutes.privacyPolicy: (context) => const PrivacyPolicyPage(),
-        PageRoutes.police: (context) => const NigeriaPoliceForcePage(),
-        PageRoutes.civilDefence: (context) => const NigeriaCivilDefencePage(),
-        PageRoutes.roadSafety: (context) => const FederalRoadSafetyPage(),
-        PageRoutes.nema: (context) => const NemaPage(),
-        PageRoutes.fireService: (context) => const FederalFireServicePage(),
-        PageRoutes.hospital: (context) => const HospitalPage(),
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode currentScope = FocusScope.of(context);
+
+        // Close the keyboard when the user clicks outside the input field
+        if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
       },
+      child: LayoutBuilder(builder: (context, constraints) {
+        return OrientationBuilder(builder: (context, orientation) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Secure Minna',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+              fontFamily: 'Poppins',
+              useMaterial3: true,
+            ),
+            home: const SecurityAgenciesPage(),
+            routes: {
+              PageRoutes.securityAgencies: (context) =>
+                  const SecurityAgenciesPage(),
+              PageRoutes.about: (context) => const AboutPage(),
+              PageRoutes.privacyPolicy: (context) => const PrivacyPolicyPage(),
+              PageRoutes.police: (context) => const NigeriaPoliceForcePage(),
+              PageRoutes.civilDefence: (context) =>
+                  const NigeriaCivilDefencePage(),
+              PageRoutes.roadSafety: (context) => const FederalRoadSafetyPage(),
+              PageRoutes.nema: (context) => const NemaPage(),
+              PageRoutes.fireService: (context) =>
+                  const FederalFireServicePage(),
+              PageRoutes.hospital: (context) => const HospitalPage(),
+            },
+          );
+        });
+      }),
     );
   }
 }
