@@ -1,57 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/util/app_images.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
 
 class FederalFireServiceTabOnePage extends StatefulWidget {
   final SecurityAgenciesModel items;
 
-  FederalFireServiceTabOnePage({required this.items});
+  const FederalFireServiceTabOnePage({super.key, required this.items});
 
   @override
-  State<FederalFireServiceTabOnePage> createState() => _FederalFireServiceTabOnePageState();
+  State<FederalFireServiceTabOnePage> createState() =>
+      _FederalFireServiceTabOnePageState();
 }
-class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOnePage> {
+
+class _FederalFireServiceTabOnePageState
+    extends State<FederalFireServiceTabOnePage> {
   late final Uri _urlCall;
   late final Uri _urlSMS;
 
   final ButtonStyle filledStyle = ElevatedButton.styleFrom(
+      backgroundColor: SecureMinnaColors.primary,
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13))
-  );
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)));
   final ButtonStyle outlineStyle = OutlinedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 14),
       minimumSize: const Size.fromHeight(50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
-      side: BorderSide(color: Color(0xFF55A3DA), width: 2)
-  );
+      side: const BorderSide(color: SecureMinnaColors.primary, width: 2));
 
   @override
   void initState() {
     super.initState();
     _urlCall = Uri.parse('tel://${widget.items.phoneNumber1}');
-     _urlSMS = Uri(
+    _urlSMS = Uri(
         scheme: 'sms',
         path: '${widget.items.phoneNumber1}',
-        query: encodeQueryParameters(<String, String>{
-          'body' : 'Help is required at: '
-        })
-    );
+        query: encodeQueryParameters(
+            <String, String>{'body': 'Help is required at: '}));
   }
 
   String? encodeQueryParameters(Map<String, String> params) {
     return params.entries
-        .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .map((e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
   }
-  Future<void> _launchCall() async{
-    if(!await launchUrl(_urlCall)) {
+
+  Future<void> _launchCall() async {
+    if (!await launchUrl(_urlCall)) {
       throw 'Could not launch $_urlCall';
     }
   }
-  Future<void> _launchSMS() async{
-    if(!await launchUrl(_urlSMS)) {
+
+  Future<void> _launchSMS() async {
+    if (!await launchUrl(_urlSMS)) {
       throw 'Could not launch $_urlSMS';
     }
   }
@@ -64,7 +68,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 795,
             width: mqWidth,
             child: Stack(
@@ -73,7 +77,7 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                     left: 10,
                     top: 20,
                     right: 10,
-                    child: Container(
+                    child: SizedBox(
                       height: 246,
                       width: 566,
                       child: Card(
@@ -83,173 +87,159 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        margin: EdgeInsets.all(5),
-                        child: Image(
+                        margin: const EdgeInsets.all(5),
+                        child: const Image(
                           fit: BoxFit.fill,
-                          image: AssetImage("assets/images/fire_service_header.png"),
+                          image: AssetImage(AppImages.fireServiceHeader),
                         ),
                       ),
                     )),
-                Positioned(
+                const Positioned(
                     left: 10,
                     top: 190,
                     right: 10,
-                    child: Container(
+                    child: SizedBox(
                       height: 132,
                       width: 132,
                       child: Image(
                         fit: BoxFit.contain,
-                        image: AssetImage("assets/images/fire_service_body.png"),
+                        image: AssetImage(AppImages.fireServiceBody),
                       ),
-                    )
-                ),
+                    )),
                 Positioned(
                   left: 10,
                   top: 320,
                   right: 10,
-                  child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                              "${widget.items.title}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18,
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFF474747))),
-                          SizedBox(height: 5),
-                          Text(
-                              "Emergency Number",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13,
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFF55A3DA))),
-                          SizedBox(height: 5),
-                          Text(
-                              "${widget.items.phoneNumber1}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 13,
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xFF7A7E80))),
-                          SizedBox(height: 16),
-                          Divider(),
-                          SizedBox(height: 20),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,0,0,0),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                    "Email Address",
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('${widget.items.title}',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              fontFamily: 'Poppins',
+                              color: SecureMinnaColors.lightBlack)),
+                      const SizedBox(height: 5),
+                      const Text('Emergency Number',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13,
+                              fontFamily: 'Poppins',
+                              color: SecureMinnaColors.primary)),
+                      const SizedBox(height: 5),
+                      Text('${widget.items.phoneNumber1}',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 13,
+                              fontFamily: 'Poppins',
+                              color: SecureMinnaColors.lightWhite)),
+                      const SizedBox(height: 16),
+                      const Divider(),
+                      const SizedBox(height: 20),
+                      const Flexible(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('Email Address',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    fontFamily: 'Poppins',
+                                    color: SecureMinnaColors.lightBlack)),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 0, 0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('${widget.items.email}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 13,
+                                    fontFamily: 'Poppins',
+                                    color: SecureMinnaColors.lightWhite)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 22),
+                      const Flexible(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('Address',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    fontFamily: 'Poppins',
+                                    color: SecureMinnaColors.lightBlack)),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 0, 0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('${widget.items.address}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 13,
+                                    fontFamily: 'Poppins',
+                                    color: SecureMinnaColors.lightWhite)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 19),
+                      const Divider(),
+                      const SizedBox(height: 28),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                          child: Align(
+                              alignment: Alignment.center,
+                              child: ElevatedButton(
+                                style: filledStyle,
+                                onPressed: () {
+                                  _launchCall();
+                                },
+                                child: const Text('Emergency Call',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF474747))),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,5,0,0),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                    "${widget.items.email}",
+                                        color: SecureMinnaColors.white)),
+                              )),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                          child: Align(
+                              alignment: Alignment.center,
+                              child: OutlinedButton(
+                                style: outlineStyle,
+                                onPressed: () {
+                                  _launchSMS();
+                                },
+                                child: const Text('Send SMS',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 13,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
                                         fontFamily: 'Poppins',
-                                        color: Color(0xFF7A7E80))),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 22),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,0,0,0),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                    "Address",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 16,
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF474747))),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,5,0,0),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                    "${widget.items.address}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 13,
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF7A7E80))),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 19),
-                          Divider(),
-                          SizedBox(height: 28),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,5,15,0),
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child:  ElevatedButton(
-                                    style: filledStyle,
-                                    onPressed:() {
-                                      _launchCall();
-                                    },
-                                    child: const Text(
-                                        "Emergency Call",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14,
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFFFFFFFF))),
-                                  )
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15,5,15,0),
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child:  OutlinedButton(
-                                    style: outlineStyle,
-                                    onPressed:() {
-                                      _launchSMS();
-                                    },
-                                    child: const Text(
-                                        "Send SMS",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14,
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFF55A3DA))),
-                                  )
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                        ],
-                      )
+                                        color: SecureMinnaColors.primary)),
+                              )),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
                   ),
                 )
               ],
@@ -259,5 +249,4 @@ class _FederalFireServiceTabOnePageState extends State<FederalFireServiceTabOneP
       ),
     );
   }
-
 }

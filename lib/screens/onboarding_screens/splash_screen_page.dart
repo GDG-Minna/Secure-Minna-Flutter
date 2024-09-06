@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../../components/secure_minna_colors.dart';
+import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/util/app_images.dart';
 
 class SplashScreenPage extends StatefulWidget {
-
   const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  State<SplashScreenPage> createState() => _SplashScreenPageState();
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
   // opening the onboarding box again
-  void open()async{
+  void open() async {
     await Hive.openBox('onboarding');
   }
 
@@ -24,41 +24,45 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 2), box.get('status') == 'true' ? elseroute : route);
+    Timer(const Duration(seconds: 2),
+        box.get('status') == 'true' ? routeHome : routeOnboarding);
     super.initState();
   }
 
   // Function to Navigate to the on-boarding screen
-  route() {
+  routeOnboarding() {
     Navigator.pushReplacementNamed(context, 'onboarding');
   }
 
   // Function to Navigate to the main screen
-  elseroute() {
+  routeHome() {
     Navigator.pushReplacementNamed(context, 'home');
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Image(
-              fit: BoxFit.fitWidth,
-              image: AssetImage("assets/images/secure_minna_logo.png"),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image(
+            fit: BoxFit.fitWidth,
+            image: AssetImage(AppImages.splashScreenLogo),
+          ),
+          SizedBox(height: 25),
+          Text(
+            'Secure Minna',
+            style: TextStyle(
+              color: SecureMinnaColors.primary,
+              fontSize: 40,
+              fontWeight: FontWeight.normal,
+              fontFamily: 'Poppins',
             ),
-            SizedBox(height: 25),
-            Text(
-              'Secure Minna',
-              style: TextStyle(
-                  color: SecureMinnaColors.primary, fontSize: 40, fontWeight: FontWeight.normal,  fontFamily: 'Poppins',),
-            ),
-          ],
-        )
-      ),
+          ),
+        ],
+      )),
     );
   }
 }

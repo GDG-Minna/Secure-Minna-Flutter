@@ -1,88 +1,159 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:secure_minna/components/secure_minna_colors.dart';
+import 'package:secure_minna/repository/repository.dart';
 import 'package:secure_minna/screens/nema_screens/nema_detail_page.dart';
-import 'package:secure_minna/repository/nema_repository.dart';
 
-import '../../models/SecurityAgenciesModel.dart';
+import 'package:secure_minna/models/security_agencies_model.dart';
+import 'package:secure_minna/util/app_images.dart';
+import 'package:secure_minna/util/app_vectors.dart';
 
 class NemaPage extends StatefulWidget {
   static const String routeName = '/nemaPage';
+
+  const NemaPage({super.key});
   @override
-  _NemaPageState createState() => _NemaPageState();
+  State<NemaPage> createState() => _NemaPageState();
 }
 
 class _NemaPageState extends State<NemaPage> {
+  TextEditingController searchController = TextEditingController();
+  List<SecurityAgenciesModel> _allItems = [];
+  List<SecurityAgenciesModel> _filteredItems = [];
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: Text(
-              "National Emergency Management Agency",
+          title: const Text('National Emergency Management Agency',
               style: TextStyle(
-                fontWeight: FontWeight.normal,  fontFamily: 'Poppins',)
-          ),
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Poppins',
+              )),
         ),
-        body: FutureBuilder(
-          future: NemaRepository().ReadJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              var items = data.data as List<SecurityAgenciesModel>;
-              return ListView.builder(
-                  itemCount: items == null ? 0 : items.length,
-                  itemBuilder: (context, index) {
-                    if(index == 0) {
-                      return Column(
-                        children: [
-                          SizedBox(height: 25),
-                          NemaList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/nema.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NemaDetailPage(items: items[index])));
-                              }
-                          )
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        children: [
-                          NemaList(
-                              title: items[index].title.toString(),
-                              subTitle: items[index].address.toString(),
-                              icon: 'assets/images/nema.png',
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NemaDetailPage(items: items[index])));
-                              }
-                          )
-                        ],
-                      );
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              child: TextFormField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  hintText: 'Start your search here',
+                  hintStyle: const TextStyle(fontSize: 13),
+                  prefixIcon: const Icon(Icons.search,
+                      color: SecureMinnaColors.lightBlack),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onChanged: (query) {
+                  _filterItems(query);
+                },
+              ),
+            ),
+            Expanded(
+              child: FutureBuilder(
+                future: Repository().nemaJsonData(),
+                builder: (context, data) {
+                  if (data.hasError) {
+                    return Center(
+                        child: Text('${data.error}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'Poppins',
+                            )));
+                  } else if (data.hasData) {
+                    _allItems = data.data as List<SecurityAgenciesModel>;
+                    if (_filteredItems.isEmpty &&
+                        searchController.text.isEmpty) {
+                      _filteredItems = _allItems;
                     }
-                  });
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+                    return _filteredItems.isEmpty
+                        ? const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 5),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.policy_outlined,
+                                    color: SecureMinnaColors.lightBlack,
+                                    size: 50),
+                                SizedBox(height: 10),
+                                Text(
+                                  'We apologize, but we couldn\'t locate the information you\'re looking for.',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: SecureMinnaColors.lightBlack,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: _filteredItems.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  nemaItem(
+                                      title: _filteredItems[index]
+                                          .title
+                                          .toString(),
+                                      subTitle: _filteredItems[index]
+                                          .address
+                                          .toString(),
+                                      icon: AppImages.nemaLogo,
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NemaDetailPage(
+                                                        items: _filteredItems[
+                                                            index])));
+                                      })
+                                ],
+                              );
+                            });
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ),
+          ],
         ));
   }
 
-  Widget NemaList(
+  void _filterItems(String query) {
+    setState(() {
+      _filteredItems = _allItems
+          .where((item) =>
+              item.title
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()) ||
+              item.phoneNumber1
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()) ||
+              item.address
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
+  Widget nemaItem(
       {required String title,
-        required String subTitle,
-        required String icon,
-        required GestureTapCallback onTap}) {
+      required String subTitle,
+      required String icon,
+      required GestureTapCallback onTap}) {
     return Column(
       children: [
         Padding(
@@ -94,11 +165,11 @@ class _NemaPageState extends State<NemaPage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   ListTile(
                       title: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 13,
                             fontFamily: 'Poppins',
@@ -108,23 +179,23 @@ class _NemaPageState extends State<NemaPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            "assets/icons/location.svg",
-                            color: SecureMinnaColors.primary,
+                            AppVectors.locationIcon,
+                            colorFilter: const ColorFilter.mode(
+                                SecureMinnaColors.primary, BlendMode.srcIn),
                             width: 12,
                             height: 12,
                           ),
-                          SizedBox(width: 3),
+                          const SizedBox(width: 3),
                           Flexible(
-                            child:  Text(
+                            child: Text(
                               subTitle,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.normal,
                                   fontSize: 11,
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF47A7E80)),
+                                  color: SecureMinnaColors.lightWhite),
                             ),
                           )
-
                         ],
                       ),
                       leading: CircleAvatar(
@@ -132,20 +203,18 @@ class _NemaPageState extends State<NemaPage> {
                         backgroundImage: AssetImage(icon),
                       ),
                       trailing: SvgPicture.asset(
-                        "assets/icons/arrow.svg",
-                        color: SecureMinnaColors.primary,
+                        AppVectors.arrowRightIcon,
+                        colorFilter: const ColorFilter.mode(
+                            SecureMinnaColors.primary, BlendMode.srcIn),
                         width: 16,
                         height: 16,
                       ),
-                      onTap: onTap
-                  ),
-                  SizedBox(height: 15),
+                      onTap: onTap),
+                  const SizedBox(height: 15),
                 ],
-              )
-          ),
+              )),
         )
       ],
     );
   }
-
 }

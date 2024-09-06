@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.secure_minna_flutter">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Secure Minna"
@@ -7,7 +6,7 @@
         android:icon="@mipmap/launcher_icon">
 
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyBUV2BqiC6PcUb-2xXVPsbKUaNU84qs5V4"/>
+           android:value="AIzaSyAID0jlcQKV3dzm7xGC7ri3vJZQ8pplZlA"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

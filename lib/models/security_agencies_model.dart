@@ -1,4 +1,3 @@
-
 class SecurityAgenciesModel {
   //data Type
   int? id;
@@ -12,21 +11,20 @@ class SecurityAgenciesModel {
   String? phoneNumber4;
   String? email;
 
-  SecurityAgenciesModel({
-    this.id,
-    this.title,
-    this.address,
-    this.lat,
-    this.long,
-    this.phoneNumber1,
-    this.phoneNumber2,
-    this.phoneNumber3,
-    this.phoneNumber4,
-    this.email
-  });
+  SecurityAgenciesModel(
+      {this.id,
+      this.title,
+      this.address,
+      this.lat,
+      this.long,
+      this.phoneNumber1,
+      this.phoneNumber2,
+      this.phoneNumber3,
+      this.phoneNumber4,
+      this.email});
 
   //method that assign values to respective datatype variables
-  SecurityAgenciesModel.fromJson(Map<String,dynamic> json) {
+  SecurityAgenciesModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     address = json['address'];
