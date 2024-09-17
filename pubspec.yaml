@@ -48,6 +48,7 @@ dependencies:
   firebase_core: ^2.22.0
   firebase_analytics: ^10.7.1
   firebase_messaging: ^14.7.5
+  markdown_widget: ^2.3.2+6
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -75,6 +76,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/json/
+    - assets/markdown/
     - shorebird.yaml
 
   fonts:
