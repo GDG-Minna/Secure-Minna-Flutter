@@ -31,6 +31,7 @@ def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
+
 android {
     namespace "com.secure.minna.mobile"
     compileSdkVersion 34
