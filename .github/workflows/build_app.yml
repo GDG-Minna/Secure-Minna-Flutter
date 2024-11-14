@@ -34,10 +34,10 @@ jobs:
           cache: true
 
       - name: 🏗️ Build APK
-        run: flutter build apk --target lib/main.dart --obfuscate --split-debug-info=secure_minna
+        run: flutter build apk -v --target lib/main.dart --obfuscate --split-debug-info=secure_minna
 
       - name: 🏭 Create Release APK
-        run: flutter build apk --release --target lib/main.dart --obfuscate --split-debug-info=secure_minna
+        run: flutter build apk -v --release --target lib/main.dart --obfuscate --split-debug-info=secure_minna
 
       - name: 🏭 Create Release
         uses: ncipollo/release-action@v1.10.0
